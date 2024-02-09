@@ -2,6 +2,7 @@
 
 var roomPicker = ["bed","living","bed2","lounge","baseM"]
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala"]
+var joy1 = new JoyStick('joyDiv');
 
 // Rooms
 var rooms = {
