@@ -25,7 +25,7 @@ var suspects = {
 
 // Extra Variables
 
-
+var mvar;
 
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
@@ -55,5 +55,12 @@ function move(direction) {
     char.style.left = (parseInt(char.style.left) + 1) + "px"
   } else if (direction == "d") {
     char.style.top = (parseInt(char.style.top) + 1) + "px"
+  }
+}
+
+function moveSS(direction) {
+  clearInterval(mvar)
+  if (direction) {
+    mvar = setInterval('move("' + direction + '")',1)
   }
 }
