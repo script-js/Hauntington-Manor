@@ -43,5 +43,13 @@ function guess(gperson) {
 }
 
 function move(direction) {
-  if 
+  if (direction == "l") {
+    char.style.left = (parseInt(char.style.left) - 1) + "px"
+  } else if (direction == "u") {
+    char.style.top = (parseInt(char.style.top) - 1) + "px"
+  } else if (direction == "r") {
+    char.style.left = (parseInt(char.style.left) + 1) + "px"
+  } else if (direction == "d") {
+    char.style.top = (parseInt(char.style.top) + 1) + "px"
+  }
 }
