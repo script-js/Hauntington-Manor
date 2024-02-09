@@ -2,7 +2,6 @@
 
 var roomPicker = ["bed","living","bed2","lounge","baseM"]
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala"]
-var joy1 = new JoyStick('joyDiv');
 
 // Rooms
 var rooms = {
@@ -24,6 +23,10 @@ var suspects = {
   "Pamala": false
 }
 
+// Extra Variables
+
+
+
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
   var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
@@ -37,4 +40,8 @@ function guess(gperson) {
   } else {
     return "Innocent!"
   }
+}
+
+function move(direction) {
+  if 
 }
