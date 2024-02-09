@@ -29,3 +29,11 @@ function initalAssignment() {
   suspects[murderer] = true;
   rooms[mroom] = true;
 }
+
+function guess(gperson) {
+  if (suspects[gperson] == true) {
+    return "The Murderer!"
+  } else {
+    return "Innocent!"
+  }
+}
