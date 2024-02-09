@@ -48,13 +48,13 @@ function move(direction) {
     char.style.top = "30px"
   }
   if (direction == "l") {
-    char.style.left = (parseInt(char.style.left) - 1) + "px"
+    char.style.left = (parseInt(char.style.left) - 3) + "px"
   } else if (direction == "u") {
-    char.style.top = (parseInt(char.style.top) - 1) + "px"
+    char.style.top = (parseInt(char.style.top) - 3) + "px"
   } else if (direction == "r") {
-    char.style.left = (parseInt(char.style.left) + 1) + "px"
+    char.style.left = (parseInt(char.style.left) + 3) + "px"
   } else if (direction == "d") {
-    char.style.top = (parseInt(char.style.top) + 1) + "px"
+    char.style.top = (parseInt(char.style.top) + 3) + "px"
   }
 }
 
