@@ -48,13 +48,21 @@ function move(direction) {
     char.style.top = "30px"
   }
   if (direction == "l") {
-    char.style.left = (parseInt(char.style.left) - 3) + "px"
+    if (parseInt(char.style.left) > 0) {
+      char.style.left = (parseInt(char.style.left) - 3) + "px";
+    }
   } else if (direction == "u") {
-    char.style.top = (parseInt(char.style.top) - 3) + "px"
+    if (parseInt(char.style.top) > 0) {
+      char.style.top = (parseInt(char.style.top) - 3) + "px";
+    }
   } else if (direction == "r") {
-    char.style.left = (parseInt(char.style.left) + 3) + "px"
+    if (window.innerWidth > parseInt(char.style.left)) {
+      char.style.left = (parseInt(char.style.left) + 3) + "px";
+    }
   } else if (direction == "d") {
-    char.style.top = (parseInt(char.style.top) + 3) + "px"
+    if (window.innerHeight > parseInt(char.style.top)) {
+      char.style.top = (parseInt(char.style.top) + 3) + "px";
+    }
   }
 }
 
