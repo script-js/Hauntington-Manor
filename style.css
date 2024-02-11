@@ -30,6 +30,10 @@ html,body {
   .arrowContainer {
     display: block;
   }
+  .modal {
+    width: 0px;
+    height: 0px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
