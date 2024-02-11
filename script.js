@@ -114,6 +114,6 @@ function popup(text) {
   setTimeout(function() {
     popupBox.style.height = "98%"
   },50)
-    setTimeout(function() {popupBox.innerHTML = text;},500)
+    setTimeout(function() {popupBox.innerHTML = text;},200)
   }
 }
