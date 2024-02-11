@@ -93,8 +93,12 @@ window.addEventListener("keyup", (event) => {
 
 function spawnClue(roomid) {
   if (roomid == "baseM") {
-    var details = ""
+    var details = "background:red"
   }
+  var newclue = document.createElement("div")
+  newclue.classList = "invisiclue";
+  newclue.style = details
+  clueCont.appendChild(newclue)
 }
 
 function rChange(roomid,iext) {
