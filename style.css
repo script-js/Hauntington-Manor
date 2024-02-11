@@ -64,4 +64,5 @@ h1 {
   animation: fadeInB ease 7s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  cursor: pointer;
 }
