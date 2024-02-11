@@ -90,3 +90,14 @@ window.addEventListener("keyup", (event) => {
     moveSS()
   }
 });
+
+function spawnClue() {alert("clue")}
+function removeClues() {alert("remove")}
+
+function rChange(roomid,iext) {
+  removeClues()
+  rimg.src = "src/room/" + roomid + iext;
+  if (rooms[roomid] == true) {
+    spawnClue()
+  }
+}
