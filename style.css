@@ -81,9 +81,8 @@ h1 {
 
 .arrowContainer {
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  right: 50%;
+  bottom: 20px;
+  left: 20px;
   text-align: center
 }
 
