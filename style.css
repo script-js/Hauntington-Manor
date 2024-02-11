@@ -3,6 +3,13 @@
   src: url("src/chapbook.otf") format("opentype");
 }
 
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v161/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format('woff2');
+}
+
 * {font-family: "Chapbook", times;}
 
 #char {
@@ -26,6 +33,9 @@ html,body {
 @media only screen and (max-width: 600px) {
   #popupBox {
     width: 100%;   
+  }
+  .arrowContainer {
+    display: block;
   }
 }
 
@@ -67,4 +77,20 @@ h1 {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   cursor: pointer;
+}
+
+.arrowContainer {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  margin: auto;
+}
+
+.arrow {
+ font-family: 'Material Symbols Outlined';
+  width: 70px;
+  height: 70px;
+  background: black;
+  border: 2px solid white;
+  color: white;
 }
