@@ -118,7 +118,7 @@ h1 {
   background-image: url("src/popup.png");
   background-repeat: no-repeat;
   background-size: cover;
-  transition: ease 0.5s;
+  transition: ease 200ms;
   margin: auto;
   border-radius: 30px;
   width: 500px;
