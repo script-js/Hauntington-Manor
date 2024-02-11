@@ -103,8 +103,9 @@ h1 {
   background: black;
   border: 2px solid white;
   color: white;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  font-size: 40px;
+  height: 80px;
 }
 
 .modal {
