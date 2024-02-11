@@ -1,6 +1,6 @@
 // Assignments
 
-var roomPicker = ["bed","living","bed2","lounge","baseM"]
+var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala"]
 
 // Rooms
@@ -36,9 +36,9 @@ function initalAssignment() {
 
 function guess(gperson) {
   if (suspects[gperson] == true) {
-    return "The Murderer!"
+    popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
   } else {
-    return "Innocent!"
+    popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
   }
 }
 
@@ -91,14 +91,17 @@ window.addEventListener("keyup", (event) => {
   }
 });
 
-function spawnClue() {alert("clue")}
-function removeClues() {alert("remove")}
+function spawnClue(roomid) {
+  if (roomid == "baseM") {
+    var details = ""
+  }
+}
 
 function rChange(roomid,iext) {
-  removeClues()
+  clueCont.innerHTML = "";
   rimg.src = "src/room/" + roomid + iext;
   if (rooms[roomid] == true) {
-    spawnClue()
+    spawnClue(roomid)
   }
 }
 
