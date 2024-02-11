@@ -108,12 +108,12 @@ function popup(text) {
     popupBox.innerHTML = "";
     setTimeout(function() {
       popupBack.style.display = "none";
-    },500)
+    },400)
   } else {
   popupBack.style.display = "block";
   setTimeout(function() {
     popupBox.style.height = "98%"
   },50)
-    setTimeout(function() {popupBox.innerHTML = text;},200)
+    setTimeout(function() {popupBox.innerHTML = text;},400)
   }
 }
