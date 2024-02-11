@@ -72,3 +72,21 @@ function moveSS(direction) {
     mvar = setInterval('move("' + direction + '")',1)
   }
 }
+
+window.addEventListener("keydown", (event) => {
+  if (event.key == "ArrowUp") {
+    moveSS("u")
+  } else if (event.key == "ArrowDown") {
+    moveSS("d")
+  } else if (event.key == "ArrowRight") {
+    moveSS("r")
+  } else if (event.key == "ArrowLeft") {
+    moveSS("l")
+  }
+});
+
+window.addEventListener("keyup", (event) => {
+  if (event.key == "ArrowUp" || event.key == "ArrowDown" || event.key == "ArrowRight" || event.key == "ArrowLeft") {
+    moveSS()
+  }
+});
