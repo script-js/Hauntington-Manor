@@ -38,7 +38,7 @@ function guess(gperson) {
   if (suspects[gperson] == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
   } else {
-    popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
+    popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
   }
 }
 
