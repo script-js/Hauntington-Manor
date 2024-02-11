@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Chapbook";
+  src: url("src/chapbook.otf") format("opentype");
+}
+
+* {font-family: "Chapbook", times;}
+
 #char {
   position: absolute
 }
@@ -18,4 +25,8 @@ html,body {
   #popupBox {
     width: 100%;   
   }
+}
+
+.startB {
+  
 }
