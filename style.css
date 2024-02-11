@@ -59,7 +59,7 @@ h1 {
   background: black;
   border: 2px solid white;
   color: white;
-  animation: fadeInAnimation ease 5s;
+  animation: fadeInB ease 5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
