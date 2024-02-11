@@ -49,19 +49,19 @@ function move(direction) {
   }
   if (direction == "l") {
     if (parseInt(char.style.left) > 0) {
-      char.style.left = (parseInt(char.style.left) - 3) + "px";
+      char.style.left = (parseInt(char.style.left) - 1) + "px";
     }
   } else if (direction == "u") {
     if (parseInt(char.style.top) > 0) {
-      char.style.top = (parseInt(char.style.top) - 3) + "px";
+      char.style.top = (parseInt(char.style.top) - 1) + "px";
     }
   } else if (direction == "r") {
     if ((window.innerWidth - 100) > parseInt(char.style.left)) {
-      char.style.left = (parseInt(char.style.left) + 3) + "px";
+      char.style.left = (parseInt(char.style.left) + 1) + "px";
     }
   } else if (direction == "d") {
     if ((window.innerHeight - 100) > parseInt(char.style.top)) {
-      char.style.top = (parseInt(char.style.top) + 3) + "px";
+      char.style.top = (parseInt(char.style.top) + 1) + "px";
     }
   }
 }
