@@ -11,6 +11,7 @@
 }
 
 * {font-family: "Chapbook", times;}
+body {background: black}
 
 #char {
   position: absolute;
