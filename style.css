@@ -31,13 +31,22 @@ h1 {
   font-size: 50px;
 }
 
-@keyframes fadeInAnimation {
+@keyframes fadeInB {
             0% {
                 opacity: 0;
             }
             50% {
               opacity: 0;
             } 
+            100% {
+                opacity: 1;
+            }
+        }
+@keyframes fadeInT {
+            0% {
+                opacity: 0;
+            }
+
             100% {
                 opacity: 1;
             }
@@ -50,7 +59,7 @@ h1 {
   background: black;
   border: 2px solid white;
   color: white;
-  animation: fadeInAnimation ease 6s;
+  animation: fadeInAnimation ease 5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
