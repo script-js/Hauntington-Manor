@@ -100,11 +100,11 @@ h1 {
 
 .arrow {
   font-family: 'Material Symbols Outlined';
-  width: 70px;
-  height: 70px;
   background: black;
   border: 2px solid white;
   color: white;
+  width: 33%;
+  padding-top: 33%;
 }
 
 .modal {
@@ -141,4 +141,10 @@ h1 {
   animation: moiExpand ease 4s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+
+.invisiclue {
+  position: absolute;
+  width: 100px;
+  height: 100px
 }
