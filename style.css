@@ -82,11 +82,12 @@ h1 {
 .arrowContainer {
   position: absolute;
   bottom: 10px;
-  margin: auto;
+  left: 50%;
+  text-align: center
 }
 
 .arrow {
- font-family: 'Material Symbols Outlined';
+  font-family: 'Material Symbols Outlined';
   width: 70px;
   height: 70px;
   background: black;
