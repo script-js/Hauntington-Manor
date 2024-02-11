@@ -23,6 +23,7 @@
   margin: auto;
   height: 100%;
   width: 500px;
+  background-image: url("src/popup.png")
 }
 
 html,body {
