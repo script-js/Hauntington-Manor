@@ -112,7 +112,7 @@ function popup(text) {
   } else {
   popupBack.style.display = "block";
   setTimeout(function() {
-    popupH.style.height = "100%"
+    popupBox.style.height = "100%"
   },50)
     setTimeout(function() {popupBox.innerHTML = text;},500)
   }
