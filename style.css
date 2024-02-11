@@ -138,7 +138,7 @@ h1 {
 }
 
 .moi {
-  animation: fadeInB ease 7s;
+  animation: moiExpand ease 4s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
