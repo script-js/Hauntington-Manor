@@ -67,10 +67,9 @@ function move(direction) {
 }
 
 function moveSS(direction) {
+  clearInterval(mvar)
   if (direction) {
     mvar = setInterval('move("' + direction + '")',1)
-  } else {
-    clearInterval(mvar)
   }
 }
 
