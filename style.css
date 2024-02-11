@@ -24,6 +24,10 @@ html,body {
   height: 100%;
 }
 
+#rimg {
+  margin: auto;
+}
+
 @media only screen and (max-width: 600px) {
   #popupBox {
     width: 100%;   
@@ -34,6 +38,9 @@ html,body {
   .startB {
     width: 85%;
   }
+  #rimg {
+    width: 98%;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -43,12 +50,16 @@ html,body {
   .startB {
     width: 500px;
   }
+  #rimg {
+    height: 98%;
+  }
 }
 
 h1 {
   font-size: 50px;
   color: white;
 }
+
 
 @keyframes fadeInB {
             0% {
