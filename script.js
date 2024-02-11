@@ -101,3 +101,19 @@ function rChange(roomid,iext) {
     spawnClue()
   }
 }
+
+function popup(text) {
+  if (!text) {
+    popupBox.style.height = "2px"
+    popupBox.innerHTML = "";
+    setTimeout(function() {
+      popupBack.style.display = "none";
+    },500)
+  } else {
+  popupBack.style.display = "block";
+  setTimeout(function() {
+    popupH.style.height = "100%"
+  },50)
+    setTimeout(function() {popupBox.innerHTML = text;},500)
+  }
+}
