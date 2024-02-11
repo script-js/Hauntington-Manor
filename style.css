@@ -27,6 +27,10 @@ html,body {
   }
 }
 
+h1 {
+  font-size: 50px;
+}
+
 .startB {
   width: 500px;
   height: 50px;
