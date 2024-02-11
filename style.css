@@ -40,6 +40,10 @@ html,body {
   .arrowContainer {
     display: none;
   }
+  .modal {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+  }
 }
 
 h1 {
