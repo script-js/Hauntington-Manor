@@ -6,7 +6,9 @@
 * {font-family: "Chapbook", times;}
 
 #char {
-  position: absolute
+  position: absolute;
+  left: 30px;
+  top: 30px;
 }
 
 #popupBox {
