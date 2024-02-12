@@ -92,8 +92,8 @@ window.addEventListener("keyup", (event) => {
 });
 
 function spawnClue(roomid) {
-  if (roomid == "baseM") {
-    var details = "background:red"
+  if (roomid == "testid") {
+    var details = "left:560px;top:80px"
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
