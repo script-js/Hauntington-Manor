@@ -99,7 +99,7 @@ function spawnClue(roomid) {
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.style = details;
-  newclue.id = "clue" +  Math.ceil(Math.random());
+  newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
   intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()}",1)
   clueCont.appendChild(newclue)
 }
