@@ -125,19 +125,17 @@ function popup(text) {
   }
 }
 
-function touches(ob1, ob2, top1) {
-  var rect1 = ob1.getBoundingClientRect();
-  var rect2 = ob2.getBoundingClientRect();
-  if (top1) {
-    var btm = parseInt(top1) + 100; 
-    var newtop = parseInt(top1);
-  } else {
-    var btm = topp + 100;
-    var newtop = topp
-  }
-  if (rect1.right > rect2.left && btm > parseInt(slingshot.style.top) && newtop < parseInt(slingshot.style.top)) {
-     return true;
-  } else {
-    return false
-  }
+function touches(clue) {
+  var clLeft = parseInt(clue.style.left) - 20;
+  var clRight = parseInt(clue.style.left) + 120;
+  var clTop = parseInt(clue.style.top) - 20;
+  var clBottom = parseInt(clue.style.top) = 120;
+  var cLeft = parseInt(char.style.left);
+  var cTop = parseInt(char.style.top);
+  return (
+    cLeft > clLeft
+    && cLeft < clRight 
+    && cTop > clTop
+    && cTop < clBottom
+  )
 }
