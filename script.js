@@ -100,7 +100,7 @@ function spawnClue(roomid) {
   newclue.classList = "invisiclue";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()}",1)
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()};console.log('a')",1)
   clueCont.appendChild(newclue)
 }
 
