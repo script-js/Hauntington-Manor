@@ -26,6 +26,7 @@ var suspects = {
 // Extra Variables
 
 var mvar;
+var intJSON = {}
 
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
@@ -93,11 +94,13 @@ window.addEventListener("keyup", (event) => {
 
 function spawnClue(roomid) {
   if (roomid == "testid") {
-    var details = "left:560px;top:80px"
+    var details = "left:560px;top:80px;background:red;"
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
-  newclue.style = details
+  newclue.style = details;
+  newclue.id = "clue" +  Math.ceil(Math.random());
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ")alert()}",1)
   clueCont.appendChild(newclue)
 }
 
