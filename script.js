@@ -129,7 +129,7 @@ function touches(clue) {
   var clLeft = parseInt(clue.style.left) - 20;
   var clRight = parseInt(clue.style.left) + 120;
   var clTop = parseInt(clue.style.top) - 20;
-  var clBottom = parseInt(clue.style.top) = 120;
+  var clBottom = parseInt(clue.style.top) + 120;
   var cLeft = parseInt(char.style.left);
   var cTop = parseInt(char.style.top);
   return (
