@@ -30,9 +30,10 @@ var intJSON = {}
 
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
-  var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
   suspects[murderer] = true;
-  rooms[mroom] = true;
+  rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
+  rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
+  rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
 }
 
 function guess(gperson) {
