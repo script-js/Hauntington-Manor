@@ -108,7 +108,7 @@ function spawnClue(roomid) {
 function clueAct(roomid) {
   if (roomid == "testid") {
     popup("<h1>Clue Found!</h1>some clue text here...")
-    window.onclick = popup
+    window.onclick = function() {popup();window.onclick = null};
   }
 }
 
