@@ -95,18 +95,38 @@ window.addEventListener("keyup", (event) => {
 
 function spawnClue(roomid) {
   if (roomid == "testid") {
-    var details = "left:560px;top:80px;background:red;"
+    var details = "left:560px;top:80px;background:red;";
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove();clueAct('" + roomid + "')};console.log('a')",1)
+  clueCont.appendChild(newclue)
+}
+
+function clueAct(roomid) {
+  if (roomid == "testid") {
+    popup("<h1>Clue Found!</h1>some clue text here...")
+    window.onclick = popup
+  }
+}
+
+function getTransitions(roomid) {
+  if (roomid == "testid") {
+    var details = "left:560px;top:80px;background:red;"
+  }
+  var newclue = document.createElement("div")
+  newclue.classList = "invisiclue";
+  newclue.style = details;
+  newclue.id = "door" +  Math.ceil(Math.random() * 1000);
   intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()};console.log('a')",1)
   clueCont.appendChild(newclue)
 }
 
 function rChange(roomid,iext) {
   clueCont.innerHTML = "";
+  getTransitions(roomid)
   rimg.src = "src/room/" + roomid + iext;
   if (rooms[roomid] == true) {
     spawnClue(roomid)
