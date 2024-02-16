@@ -112,14 +112,18 @@ function clueAct(roomid) {
   }
 }
 
-function getTransitions(roomid,secondrun) {
+function getTransitions(roomid,run) {
   if (roomid == "foyer") {
-    // here
+    var details = "top:50%"
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.style = details;
-  newclue.id = "door" +  Math.ceil(Math.random() * 1000);
+  if (!run) {
+    newclue.id = "door";
+  } else {
+    newclue.id = "door" + run;
+  }
   intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()};console.log('a')",1)
   clueCont.appendChild(newclue)
 }
@@ -127,7 +131,8 @@ function getTransitions(roomid,secondrun) {
 getTransitions("foyer")
 
 function rChange(roomid) {
-  clueCont.innerHTML = "";
+  var doors = document.querySelectorAll(".invisiclue")
+  Object.keys(doors).forEach(function (k) {k.remove()})
   getTransitions(roomid)
   rimg.src = "src/room/" + roomid + ".png";
   if (rooms[roomid] == true) {
