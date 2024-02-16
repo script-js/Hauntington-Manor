@@ -124,10 +124,10 @@ function getTransitions(roomid) {
   clueCont.appendChild(newclue)
 }
 
-function rChange(roomid,iext) {
+function rChange(roomid) {
   clueCont.innerHTML = "";
   getTransitions(roomid)
-  rimg.src = "src/room/" + roomid + iext;
+  rimg.src = "src/room/" + roomid + ".png";
   if (rooms[roomid] == true) {
     spawnClue(roomid)
   }
