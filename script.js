@@ -112,9 +112,9 @@ function clueAct(roomid) {
   }
 }
 
-function getTransitions(roomid) {
-  if (roomid == "testid") {
-    var details = "left:560px;top:80px;background:red;"
+function getTransitions(roomid,secondrun) {
+  if (roomid == "foyer") {
+    // here
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
@@ -123,6 +123,8 @@ function getTransitions(roomid) {
   intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()};console.log('a')",1)
   clueCont.appendChild(newclue)
 }
+
+getTransitions("foyer")
 
 function rChange(roomid) {
   clueCont.innerHTML = "";
