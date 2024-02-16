@@ -171,4 +171,7 @@ h1 {
 
 #imgTCont {
   position: relative;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
