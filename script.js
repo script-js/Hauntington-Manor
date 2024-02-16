@@ -125,13 +125,13 @@ function getTransitions(roomid,run) {
     newclue.id = "door" + run;
   }
   intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove()};console.log('a')",1)
-  imgTCont.appendChild(newclue)
+  clueCont.appendChild(newclue)
 }
 
 getTransitions("foyer")
 
 function rChange(roomid) {
-  var doors = imgTCont.querySelectorAll(".invisiclue")
+  var doors = clueCont.querySelectorAll(".invisiclue")
   Object.keys(doors).forEach(function (k) {k.remove()})
   getTransitions(roomid)
   rimg.src = "src/room/" + roomid + ".png";
