@@ -166,5 +166,9 @@ h1 {
 .invisiclue {
   position: absolute;
   width: 100px;
-  height: 100px
+  height: 100px;
+}
+
+.imgTCont {
+  position: relative;
 }
