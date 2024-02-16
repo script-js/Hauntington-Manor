@@ -173,4 +173,4 @@ function touches(clue) {
   )
 }
 
-window.addEventListener("resize", (event) => {popup("<h1>Window Resized</h1><p>This can cause issues. Please revert back to the original size."); window.onclick = function() {popup()}});
+window.addEventListener("resize", (event) => {popup("<h1>Window Resized</h1><p>This can cause issues. Please revert back to the original size.</p>"); window.onclick = function() {popup()}});
