@@ -114,7 +114,9 @@ function clueAct(roomid) {
 
 function getTransitions(roomid,run) {
   if (roomid == "foyer") {
-    var details = "top:50%"
+    var horiz = rimg.getBoundingClientRect().right - 50;
+    var vert = (rimg.getBoundingClientRect().bottom / 2) - 70;
+    var details = "left:" + horiz + "px;top:" + vert + "px;"
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
@@ -170,3 +172,5 @@ function touches(clue) {
     && cTop < clBottom
   )
 }
+
+window.addEventListener("resize", (event) => {popup("<h1>Window Resized</h1><p>This can cause issues. Please revert back to the original size."); window.onclick = function() {popup()}});
