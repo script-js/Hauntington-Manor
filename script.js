@@ -131,7 +131,7 @@ function getTransitions(roomid,run) {
   } else {
     newclue.id = "door" + run;
   }
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");rChange('" + transitionTo + "')};",1)
+  intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");rChange('" + transitionTo + "')};",1)
   imgTCont.appendChild(newclue)
 }
 
@@ -168,6 +168,21 @@ function touches(clue) {
   var clRight = parseInt(clue.style.left) + 120;
   var clTop = parseInt(clue.style.top) - 20;
   var clBottom = parseInt(clue.style.top) + 120;
+  var cLeft = parseInt(char.style.left);
+  var cTop = parseInt(char.style.top);
+  return (
+    cLeft > clLeft
+    && cLeft < clRight 
+    && cTop > clTop
+    && cTop < clBottom
+  )
+}
+
+function touchesD(door) {
+  var clLeft = door.getBoundingClientRect().left - 20;
+  var clRight = door.getBoundingClientRect().right + 20;
+  var clTop = door.getBoundingClientRect().top - 20;
+  var clBottom = door.getBoundingClientRect().bottom + 20;
   var cLeft = parseInt(char.style.left);
   var cTop = parseInt(char.style.top);
   return (
