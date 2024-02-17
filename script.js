@@ -48,20 +48,21 @@ function guess(gperson) {
 }
 
 function move(direction) {
+  var irect = rimg.getBoundingClientRect()
   if (direction == "l") {
-    if (parseInt(char.style.left) > 0) {
+    if (parseInt(char.style.left) > irect.left) {
       char.style.left = (parseInt(char.style.left) - 1) + "px";
     }
   } else if (direction == "u") {
-    if (parseInt(char.style.top) > 0) {
+    if (parseInt(char.style.top) > irect.top) {
       char.style.top = (parseInt(char.style.top) - 1) + "px";
     }
   } else if (direction == "r") {
-    if ((window.innerWidth - 100) > parseInt(char.style.left)) {
+    if (irect.right > parseInt(char.style.left)) {
       char.style.left = (parseInt(char.style.left) + 1) + "px";
     }
   } else if (direction == "d") {
-    if ((window.innerHeight - 100) > parseInt(char.style.top)) {
+    if (irect.bottom > parseInt(char.style.top)) {
       char.style.top = (parseInt(char.style.top) + 1) + "px";
     }
   }
