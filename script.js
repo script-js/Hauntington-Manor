@@ -45,10 +45,6 @@ function guess(gperson) {
 }
 
 function move(direction) {
-  if (!char.style.left || !char.style.top) {
-    char.style.left = "30px"
-    char.style.top = "30px"
-  }
   if (direction == "l") {
     if (parseInt(char.style.left) > 0) {
       char.style.left = (parseInt(char.style.left) - 1) + "px";
@@ -123,13 +119,17 @@ function getTransitions(roomid,run) {
       getTransitions("foyer",1)
     }
   } else if (roomid == "living") {
-    if (run == 2) {
+    if (run == 3) {
       var details = "top:0;left:43%";
       var transitionTo = "bed";
     } else if (run == 1) {
       var details = "top:43%;right:-50px";
       var transitionTo = "kitchen";
       getTransitions("living",2)
+    } else if (run == 2) {
+      var details = "top:43%;left:-50px";
+      var transitionTo = "foyer";
+      getTransitions("living",3)
     } else {
       var details = "left:60%;top:90%";
       var transitionTo = "lounge";
