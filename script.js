@@ -145,7 +145,7 @@ function getTransitions(roomid,run) {
   } else if (roomid == "bed") {
     var details = "bottom:-50px;left:45%";
     var transitionTo = "living"
-  } else if (room == "baseM") {
+  } else if (roomid == "baseM") {
     if (run) {
       var details = "top:0;left:0;"
       var transitionTo = "foyer"
