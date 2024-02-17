@@ -139,7 +139,7 @@ getTransitions("foyer")
 
 function rChange(roomid) {
   var doors = imgTCont.querySelectorAll(".invisiclue")
-  Object.keys(doors).forEach(function (k) {k.remove()})
+  Object.keys(doors).forEach(function (k) {doors[k].remove()})
   getTransitions(roomid)
   rimg.src = "src/room/" + roomid + ".png";
   if (rooms[roomid] == true) {
