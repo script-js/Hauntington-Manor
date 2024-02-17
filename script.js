@@ -122,7 +122,7 @@ function getTransitions(roomid,run) {
       if (started == false) {
         started = true
       } else {
-        var transChange = true
+        var transChange = "b"
       }
       getTransitions("foyer",1)
     }
@@ -157,6 +157,8 @@ function getTransitions(roomid,run) {
   imgTCont.appendChild(newclue)
   if (transChange) {
     resetToTransition(newclue.id)
+  } else if (transChange = "b") {
+    resetToTransition(newclue.id,true)
   }
 }
 
@@ -223,8 +225,13 @@ function touchesD(door) {
   )
 }
 
-function resetToTransition(transition) {
+function resetToTransition(transition,back) {
   console.log(transition)
   var rect = document.getElementById(transition).getBoundingClientRect()
-  char.style = "left:" + (rect.right + 30) + "px;top:" + rect.top + "px;";
+  if (back) {
+    var right1 = rect.right - 30
+  } else {
+    var right1 = rect.right + 30
+  }
+  char.style = "left:" + right1 + "px;top:" + rect.top + "px;";
 }
