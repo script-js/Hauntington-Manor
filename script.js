@@ -149,11 +149,11 @@ function getTransitions(roomid,run) {
   } else {
     newclue.id = "door" + run;
   }
+  intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
+  imgTCont.appendChild(newclue)
   if (transChange) {
     resetToTransition(newclue.id)
   }
-  intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
-  imgTCont.appendChild(newclue)
 }
 
 getTransitions("foyer")
@@ -220,6 +220,7 @@ function touchesD(door) {
 }
 
 function resetToTransition(transition) {
+  console.log(transition)
   var rect = document.getElementById(transition).getBoundingClientRect()
   char.style = "left:" + (rect.right + 30) + "px;top:" + rect.top + "px;";
 }
