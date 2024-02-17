@@ -58,11 +58,11 @@ function move(direction) {
       char.style.top = (parseInt(char.style.top) - 1) + "px";
     }
   } else if (direction == "r") {
-    if (irect.right > parseInt(char.style.left)) {
+    if (irect.right < parseInt(char.style.left)) {
       char.style.left = (parseInt(char.style.left) + 1) + "px";
     }
   } else if (direction == "d") {
-    if (irect.bottom > parseInt(char.style.top)) {
+    if (irect.bottom < parseInt(char.style.top)) {
       char.style.top = (parseInt(char.style.top) + 1) + "px";
     }
   }
@@ -230,9 +230,11 @@ function resetToTransition(transition,back) {
   console.log(transition)
   var rect = document.getElementById(transition).getBoundingClientRect()
   if (back) {
-    var right1 = rect.right - 130
+    var right1 = rect.right - 130;
+    var top1 = rect.top - 130
   } else {
     var right1 = rect.right + 30
+    var top1 = rect.top + 
   }
-  char.style = "left:" + right1 + "px;top:" + rect.top + "px;";
+  char.style = "left:" + right1 + "px;top:" + top1 + "px;";
 }
