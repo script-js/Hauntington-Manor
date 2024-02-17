@@ -27,6 +27,9 @@ var suspects = {
 
 var mvar;
 var intJSON = {}
+var started = false;
+char.style.left = (rimg.getBoundingClientRect().right / 2) + "px"
+char.style.top = (rimg.getBoundingClientRect().bottom / 2) + "px"
 
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
@@ -45,10 +48,6 @@ function guess(gperson) {
 }
 
 function move(direction) {
-  if (!char.style.left || !char.style.top) {
-    char.style.left = "30px"
-    char.style.top = (rimg.getBoundingClientRect().left + 30) + "px"
-  }
   if (direction == "l") {
     if (parseInt(char.style.left) > 0) {
       char.style.left = (parseInt(char.style.left) - 1) + "px";
@@ -120,6 +119,11 @@ function getTransitions(roomid,run) {
     } else {
       var details = "top:43%;right:-50px";
       var transitionTo = "living";
+      if (started == false) {
+        started = true
+      } else {
+        var transChange = true
+      }
       getTransitions("foyer",1)
     }
   } else if (roomid == "living") {
