@@ -147,8 +147,11 @@ function getTransitions(roomid,run) {
     var transitionTo = "living"
   } else if (room == "baseM") {
     if (run) {
-      
+      var details = "top:0;left:0;"
+      var transitionTo = "foyer"
     } else {
+      var details = "right: 0; top: 80%;";
+      var transitionTo = "kitchen"
       getTransitions("baseM",1)
     }
   }
