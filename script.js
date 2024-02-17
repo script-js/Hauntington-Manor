@@ -160,13 +160,6 @@ function getTransitions(roomid,run) {
   }
   intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
   imgTCont.appendChild(newclue)
-  if (transChange == true) {
-    resetToTransition(newclue.id)
-  } else if (transChange == "b") {
-    resetToTransition(newclue.id,true)
-  } else if (transChange == "t") {
-    resetToTransition(newclue.id,"t")
-  }
 }
 
 getTransitions("foyer")
@@ -175,6 +168,7 @@ function rChange(roomid) {
   var doors = imgTCont.querySelectorAll(".invisiclue")
   Object.keys(doors).forEach(function (k) {doors[k].remove()})
   Object.keys(intJSON).forEach(function (k) {clearInterval(intJSON[k])})
+  resetCPOS()
   getTransitions(roomid)
   if (roomid == "foyer") {
     rimg.src = "src/room.png"
@@ -232,20 +226,7 @@ function touchesD(door) {
   )
 }
 
-function resetToTransition(transition,back) {
-  console.log(transition)
-  var rect = document.getElementById(transition).getBoundingClientRect()
-  if (back) {
-    if (back == "t") {
-      var top1 = rect.top - 130
-      var right1 = rect.right
-    } else {
-      var right1 = rect.right - 130;
-      var top1 = rect.top;
-    }
-  } else {
-    var right1 = rect.right + 30
-    var top1 = rect.top + 30
-  }
-  char.style = "left:" + right1 + "px;top:" + top1 + "px;";
+function resetCPOS() {
+  char.style.left = (rimg.getBoundingClientRect().right / 2) + "px"
+  char.style.top = (rimg.getBoundingClientRect().bottom / 2) + "px"
 }
