@@ -133,7 +133,7 @@ function getTransitions(roomid,run) {
     } else if (run == 2) {
       var details = "top:43%;left:-50px";
       var transitionTo = "foyer";
-      setTimeout(function(){resetToTransition("door2")},500)
+      var transChange = true;
       getTransitions("living",3)
     } else {
       var details = "left:60%;top:90%";
@@ -148,6 +148,9 @@ function getTransitions(roomid,run) {
     newclue.id = "door";
   } else {
     newclue.id = "door" + run;
+  }
+  if (transChange) {
+    resetToTransition(newclue.id)
   }
   intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
   imgTCont.appendChild(newclue)
