@@ -101,7 +101,7 @@ function spawnClue(roomid) {
   newclue.classList = "invisiclue";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove();clueAct('" + roomid + "')};",1)
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {" + newclue.id + ".remove();clueAct('" + roomid + "')};",1)
   clueCont.appendChild(newclue)
 }
 
@@ -115,13 +115,15 @@ function clueAct(roomid) {
 function getTransitions(roomid,run) {
   if (roomid == "foyer") {
     if (run) {
-      var details = "left:85%;top:90%";
+      var details = "right:0;top:90%";
       var transitionTo = "baseM";
     } else {
-      var details = "top:43%;left:90%";
+      var details = "top:43%;right:-50px";
       var transitionTo = "living";
       getTransitions("foyer",true)
     }
+  } else if (roomid == "living") {
+    
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
@@ -131,7 +133,7 @@ function getTransitions(roomid,run) {
   } else {
     newclue.id = "door" + run;
   }
-  intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");rChange('" + transitionTo + "')};",1)
+  intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
   imgTCont.appendChild(newclue)
 }
 
