@@ -118,7 +118,7 @@ function getTransitions(roomid,run) {
       var details = "right:0;top:90%";
       var transitionTo = "baseM";
     } else {
-      var details = "top:43%;right:-50px";
+      var details = "top:40%;right:-50px";
       var transitionTo = "living";
       getTransitions("foyer",1)
     }
@@ -127,11 +127,11 @@ function getTransitions(roomid,run) {
       var details = "top:0;left:43%";
       var transitionTo = "bed";
     } else if (run == 1) {
-      var details = "top:43%;right:-50px";
+      var details = "top:40%;right:-50px";
       var transitionTo = "kitchen";
       getTransitions("living",2)
     } else if (run == 2) {
-      var details = "top:43%;left:-50px";
+      var details = "top:40%;left:-50px";
       var transitionTo = "foyer";
       getTransitions("living",3)
     } else {
@@ -153,6 +153,15 @@ function getTransitions(roomid,run) {
       var details = "right: 0; top: 80%;";
       var transitionTo = "kitchen"
       getTransitions("baseM",1)
+    }
+  } else if (roomid == "kitchen") {
+    if (run) {
+      var details = "top:40%;left:0;"
+      var transitionTo = "living"
+    } else {
+      var details = "bottom:-50px;left:15%";
+      var transitionTo = "baseM"
+      getTransitions("kitchen",1)
     }
   }
   var newclue = document.createElement("div")
