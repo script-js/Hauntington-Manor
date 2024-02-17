@@ -229,7 +229,7 @@ function resetToTransition(transition,back) {
   console.log(transition)
   var rect = document.getElementById(transition).getBoundingClientRect()
   if (back) {
-    var right1 = rect.right - 30
+    var right1 = rect.right - 130
   } else {
     var right1 = rect.right + 30
   }
