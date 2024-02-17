@@ -181,7 +181,7 @@ function rChange(roomid) {
       rimg.src = "src/room/" + roomid + ".png";
     }
     resetCPOS();
-  },1500)
+  },1000)
   
 }
 
