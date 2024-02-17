@@ -123,7 +123,7 @@ function getTransitions(roomid,run) {
       getTransitions("foyer",true)
     }
   } else if (roomid == "living") {
-    
+    //details here
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
