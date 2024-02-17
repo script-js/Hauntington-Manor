@@ -165,9 +165,11 @@ function rChange(roomid) {
   Object.keys(doors).forEach(function (k) {doors[k].remove()})
   Object.keys(intJSON).forEach(function (k) {clearInterval(intJSON[k])})
   resetCPOS();
-  rimg.style = "animation:fadeInOut ease 3s;"
+  rimg.style.animation = "fadeInOut ease 3s"
+  char.style.animation = "fadeInOut ease 3s"
   setTimeout(function() {
-    rimg.style = ""
+    rimg.style.animation = ""
+    char.style.animation = ""
   },3000)
   getTransitions(roomid)
   if (roomid == "foyer") {
