@@ -160,7 +160,11 @@ function rChange(roomid) {
   Object.keys(doors).forEach(function (k) {doors[k].remove()})
   Object.keys(intJSON).forEach(function (k) {clearInterval(intJSON[k])})
   getTransitions(roomid)
-  rimg.src = "src/room/" + roomid + ".png";
+  if (roomid == "foyer") {
+    rimg.src = "src/room.png"
+  } else {
+    rimg.src = "src/room/" + roomid + ".png";
+  }
   if (rooms[roomid] == true) {
     spawnClue(roomid)
   }
@@ -214,5 +218,5 @@ function touchesD(door) {
 
 function resetToTransition(transition) {
   var rect = document.getElementById(transition).getBoundingClientRect()
-  char.style = "left:" + rect.right + "px;top:" + rect.top + "px;";
+  char.style = "left:" + (rect.right + 30) + "px;top:" + rect.top + "px;";
 }
