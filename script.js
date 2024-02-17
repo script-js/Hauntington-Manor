@@ -164,22 +164,25 @@ function rChange(roomid) {
   var doors = imgTCont.querySelectorAll(".invisiclue")
   Object.keys(doors).forEach(function (k) {doors[k].remove()})
   Object.keys(intJSON).forEach(function (k) {clearInterval(intJSON[k])})
-  resetCPOS();
   rimg.style.animation = "fadeInOut ease 3s"
   char.style.animation = "fadeInOut ease 3s"
   setTimeout(function() {
     rimg.style.animation = ""
     char.style.animation = ""
+    getTransitions(roomid)
+    if (rooms[roomid] == true) {
+      spawnClue(roomid)
+    }
   },3000)
-  getTransitions(roomid)
-  if (roomid == "foyer") {
-    rimg.src = "src/room.png"
-  } else {
-    rimg.src = "src/room/" + roomid + ".png";
-  }
-  if (rooms[roomid] == true) {
-    spawnClue(roomid)
-  }
+  setTimeout(function() {
+    if (roomid == "foyer") {
+      rimg.src = "src/room.png"
+    } else {
+      rimg.src = "src/room/" + roomid + ".png";
+    }
+    resetCPOS();
+  },1500)
+  
 }
 
 function popup(text) {
