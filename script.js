@@ -128,11 +128,11 @@ function getTransitions(roomid,run) {
       var transitionTo = "bed";
     } else if (run == 1) {
       var details = "top:43%;right:-50px";
-      var transitionTo = "lounge";
+      var transitionTo = "kitchen";
       getTransitions("living",2)
     } else {
       var details = "left:60%;top:90%";
-      var transitionTo = "kitchen";
+      var transitionTo = "lounge";
       getTransitions("living",1)
     }
   }
