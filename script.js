@@ -145,6 +145,10 @@ function getTransitions(roomid,run) {
       var transitionTo = "lounge";
       getTransitions("living",1)
     }
+  } else if (roomid == "lounge") {
+    var details = "top:0;left:60%;";
+    var transitionTo = "living";
+    var transChange = "t"
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
