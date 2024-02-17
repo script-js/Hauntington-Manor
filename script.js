@@ -45,6 +45,10 @@ function guess(gperson) {
 }
 
 function move(direction) {
+  if (!char.style.left || !char.style.top) {
+    char.style.left = "30px"
+    char.style.top = (rimg.getBoundingClientRect().left + 30) + "px"
+  }
   if (direction == "l") {
     if (parseInt(char.style.left) > 0) {
       char.style.left = (parseInt(char.style.left) - 1) + "px";
@@ -129,6 +133,7 @@ function getTransitions(roomid,run) {
     } else if (run == 2) {
       var details = "top:43%;left:-50px";
       var transitionTo = "foyer";
+      setTimeout(function(){resetToTransition("door2")},500)
       getTransitions("living",3)
     } else {
       var details = "left:60%;top:90%";
@@ -205,4 +210,9 @@ function touchesD(door) {
     && cTop > clTop
     && cTop < clBottom
   )
+}
+
+function resetToTransition(transition) {
+  var rect = document.getElementById(transition).getBoundingClientRect()
+  char.style = "left:" + rect.right + "px;top:" + rect.top + "px;";
 }
