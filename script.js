@@ -234,7 +234,7 @@ function resetToTransition(transition,back) {
     var top1 = rect.top - 130
   } else {
     var right1 = rect.right + 30
-    var top1 = rect.top + 
+    var top1 = rect.top + 30
   }
   char.style = "left:" + right1 + "px;top:" + top1 + "px;";
 }
