@@ -120,10 +120,21 @@ function getTransitions(roomid,run) {
     } else {
       var details = "top:43%;right:-50px";
       var transitionTo = "living";
-      getTransitions("foyer",true)
+      getTransitions("foyer",1)
     }
   } else if (roomid == "living") {
-    //details here
+    if (run == 2) {
+      var details = "top:0;left:43%";
+      var transitionTo = "bed";
+    } else if (run == 1) {
+      var details = "top:43%;right:-50px";
+      var transitionTo = "lounge";
+      getTransitions("living",2)
+    } else {
+      var details = "left:60%;top:90%";
+      var transitionTo = "kitchen";
+      getTransitions("living",1)
+    }
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
