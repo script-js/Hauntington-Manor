@@ -145,6 +145,12 @@ function getTransitions(roomid,run) {
   } else if (roomid == "bed") {
     var details = "bottom:-50px;left:45%";
     var transitionTo = "living"
+  } else if (room == "baseM") {
+    if (run) {
+      
+    } else {
+      getTransitions("baseM",1)
+    }
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
@@ -182,7 +188,9 @@ function rChange(roomid) {
     }
     resetCPOS();
   },1000)
-  
+  if (!roomid || roomid == "undefined") {
+    popup("<h1>Uh Oh!</h1><p>Something went wrong when changing the room. Please <a href='mailto:sscriptjs@gmail.com'>report this problem</a></p><p>ERROR_ROOMID_NULL</p>")
+  }
 }
 
 function popup(text) {
