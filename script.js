@@ -234,8 +234,10 @@ function resetToTransition(transition,back) {
   if (back) {
     if (back == "t") {
       var top1 = rect.top - 130
+      var right1 = rect.right
     } else {
       var right1 = rect.right - 130;
+      var top1 = rect.top;
     }
   } else {
     var right1 = rect.right + 30
