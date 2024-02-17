@@ -155,7 +155,7 @@ function getTransitions(roomid,run) {
   }
   intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
   imgTCont.appendChild(newclue)
-  if (transChange) {
+  if (transChange == true) {
     resetToTransition(newclue.id)
   } else if (transChange = "b") {
     resetToTransition(newclue.id,true)
