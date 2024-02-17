@@ -158,8 +158,10 @@ function getTransitions(roomid,run) {
   imgTCont.appendChild(newclue)
   if (transChange == true) {
     resetToTransition(newclue.id)
-  } else if (transChange = "b") {
+  } else if (transChange == "b") {
     resetToTransition(newclue.id,true)
+  } else if (transChange == "t") {
+    resetToTransition(newclue.id,"t")
   }
 }
 
@@ -230,8 +232,11 @@ function resetToTransition(transition,back) {
   console.log(transition)
   var rect = document.getElementById(transition).getBoundingClientRect()
   if (back) {
-    var right1 = rect.right - 130;
-    var top1 = rect.top - 130
+    if (back == "t") {
+      var top1 = rect.top - 130
+    } else {
+      var right1 = rect.right - 130;
+    }
   } else {
     var right1 = rect.right + 30
     var top1 = rect.top + 30
