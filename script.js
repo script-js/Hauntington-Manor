@@ -1,7 +1,10 @@
 // Assignments
 
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
-var rcOPT = [true,false,false,"fake"]
+var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
+var rcOPT = [false,"point"]
+var weapons = ["Knife","Pipe","Rope","Glass Shard","Bat"]
+var weapon = weapons[(Math.floor(Math.random() * weapons.length))]
 
 // Rooms
 
@@ -14,11 +17,13 @@ var rooms = {
   "attic": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
   "kitchen": rcOPT[(Math.floor(Math.random() * rcOPT.length))]
 }
+rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true
 
 // Suspects
+// Clue Format: [message(0),ifmurderer(1)]
 
 var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":[""]},
+  "Betty": {"isMurderer":false,"clueATTR":["NM","IM"]},
   "Anita": {"isMurderer":false,"clueATTR":[]},
   "Nicholas": {"isMurderer":false,"clueATTR":[]},
   "Theodore": {"isMurderer":false,"clueATTR":[]},
@@ -103,20 +108,29 @@ window.addEventListener("keyup", (event) => {
 });
 
 function spawnClue(roomid) {
-  if (roomid == "testid") {
-    var details = "left:560px;top:80px;background:red;";
+  if (rooms[roomid] == true) {
+    var iurl = "weapons/" + weapon + ".png";
+  } else if (rooms[roomid] == "point") {
+    var npcn = charPicker[(Math.floor(Math.random() * charPicker.length))];
+    var npc = suspects[npcn]
+    var iurl = "src/suspects/" + npcn.toLowerCase() + ".png"
+    if (npc.isMurderer) {
+      var clueText = npc.clueATTR[1]
+    } else {
+      var clueText = npc.clueATTR[0]
+    }
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
+  newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {" + newclue.id + ".remove();clueAct('" + roomid + "'," + mcdata + ")};",1)
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {" + newclue.id + ".remove();clueAct('" + clueText + "')};",1)
   imgTCont.appendChild(newclue)
 }
 
-function clueAct(roomid) {
-  console.log(mcdata)
-  popup("<h1>Clue Found!</h1>")
+function clueAct(message) {
+  popup("<h1>Clue Found!</h1><p>" + message + "</p>")
   window.onclick = function() {popup();window.onclick = null};
 }
 
@@ -217,7 +231,7 @@ function rChange(roomid) {
     rimg.style.animation = ""
     char.style.animation = ""
     getTransitions(roomid)
-    if (rooms[roomid] == true) {
+    if (rooms[roomid]) {
       spawnClue(roomid)
     }
   },3000)
