@@ -194,3 +194,17 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+
+.susBox {
+  display:flex;
+  align-items:center
+}
+
+.guessB {
+  width:100px;
+  transition: ease 200ms;
+}
+
+.guessB:hover {
+  background: lightgray;
+}
