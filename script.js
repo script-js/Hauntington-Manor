@@ -122,7 +122,7 @@ function clueAct(roomid) {
 function getTransitions(roomid,run) {
   if (roomid == "foyer") {
     if (run) {
-      var details = "right:0;top:90%";
+      var details = "right:0;bottom:0;";
       var transitionTo = "baseM";
     } else {
       var details = "top:40%;right:0";
@@ -142,7 +142,7 @@ function getTransitions(roomid,run) {
       var transitionTo = "foyer";
       getTransitions("living",3)
     } else {
-      var details = "left:60%;top:90%";
+      var details = "left:60%;bottom:0;";
       var transitionTo = "lounge";
       getTransitions("living",1)
     }
