@@ -282,7 +282,7 @@ function touchesD(door) {
 }
 
 function cShow() {
-  popup("<p>&nbsp;</p><h1>Who Did It?</h1><div class='guessB' onclick='guess(this)'><img src='src/suspects/betty.FEXT'><p>Betty</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/anita.FEXT'><p>Anita</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/nicholas.FEXT'><p>Nicholas</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/theodore.FEXT'><p>Theodore</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/pamala.FEXT'><p>Pamala</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/arthur.FEXT'><p>Arthur</p></div>")
+  popup("<p>&nbsp;</p><h1>Who Did It?</h1><div class='guessB' onclick='guess(this)'><img src='src/suspects/betty.png'><p>Betty</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/anita.png'><p>Anita</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/nicholas.png'><p>Nicholas</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/theodore.png'><p>Theodore</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/pamala.png'><p>Pamala</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/arthur.png'><p>Arthur</p></div>")
 }
 
 function rungame() {
