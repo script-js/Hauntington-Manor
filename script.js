@@ -178,6 +178,12 @@ function getTransitions(roomid,run) {
       var transitionTo = "bed2";
       getTransitions("uHall",1)
     }
+  } else if (roomid == "bed2") {
+    var details = "top:27%;left:-50px";
+    var transitionTo = "uHall"
+  } else if (roomid == "attic") {
+    var details = "right:-50px;top:40%";
+    var transitionTo = "uHall"
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
