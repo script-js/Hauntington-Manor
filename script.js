@@ -1,18 +1,18 @@
 // Assignments
 
-var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
+var rcOPT = [true,false,false,"fake"]
 
 // Rooms
 
 var rooms = {
-  "bed": false,
-  "living": false,
-  "bed2": false,
-  "lounge": false,
-  "baseM": false,
-  "attic": false,
-  "kitchen": false
+  "bed": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
+  "living": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
+  "bed2": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
+  "lounge": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
+  "baseM": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
+  "attic": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
+  "kitchen": rcOPT[(Math.floor(Math.random() * rcOPT.length))]
 }
 
 // Suspects
@@ -31,16 +31,9 @@ var suspects = {
 var mvar;
 var intJSON = {}
 var started = false;
+suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
 
 // Functions/Event Listeners
-
-function initalAssignment() {
-  var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
-  suspects[murderer].isMurderer = true;
-  rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
-  rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
-  rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
-}
 
 function resetCPOS() {
   char.style.left = (rimg.getBoundingClientRect().width / 2) + "px"
