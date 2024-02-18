@@ -32,6 +32,11 @@ var mvar;
 var intJSON = {}
 var started = false;
 suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
+Object.keys(suspects).forEach(function (k) {
+  if (suspects[k].isMurderer == true) {
+    var mcdata = suspects[k].clueATTR;
+  }
+})
 
 // Functions/Event Listeners
 
@@ -99,19 +104,19 @@ function spawnClue(roomid) {
   if (roomid == "testid") {
     var details = "left:560px;top:80px;background:red;";
   }
+
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {" + newclue.id + ".remove();clueAct('" + roomid + "')};",1)
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {" + newclue.id + ".remove();clueAct('" + roomid + "'," + mcdata + ")};",1)
   clueCont.appendChild(newclue)
 }
 
 function clueAct(roomid) {
-  if (roomid == "testid") {
-    popup("<h1>Clue Found!</h1>some clue text here...")
-    window.onclick = function() {popup();window.onclick = null};
-  }
+  console.log(mcdata)
+  popup("<h1>Clue Found!</h1>")
+  window.onclick = function() {popup();window.onclick = null};
 }
 
 function getTransitions(roomid,run) {
