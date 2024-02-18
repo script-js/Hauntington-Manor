@@ -34,7 +34,7 @@ var started = false;
 suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
 Object.keys(suspects).forEach(function (k) {
   if (suspects[k].isMurderer == true) {
-    var mcdata = suspects[k].clueATTR;
+    window.mcdata = suspects[k].clueATTR;
   }
 })
 
