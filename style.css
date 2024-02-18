@@ -211,5 +211,6 @@ h1 {
 }
 
 .guessB img {
-  border-radius: 50px
+  border-radius: 50px;
+  width: 70%;
 }
