@@ -125,7 +125,7 @@ function getTransitions(roomid,run) {
   } else if (roomid == "living") {
     if (run == 3) {
       var details = "top:0;left:43%";
-      var transitionTo = "bed";
+      var transitionTo = "uHall";
     } else if (run == 1) {
       var details = "top:40%;right:-50px";
       var transitionTo = "kitchen";
