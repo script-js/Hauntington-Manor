@@ -120,6 +120,7 @@ function spawnClue(roomid) {
       var clueText = npc.clueATTR[0]
     }
   }
+  var details = "left:0;top:0;"
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
