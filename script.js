@@ -125,7 +125,7 @@ function getTransitions(roomid,run) {
       var details = "right:0;top:90%";
       var transitionTo = "baseM";
     } else {
-      var details = "top:40%;right:-50px";
+      var details = "top:40%;right:0";
       var transitionTo = "living";
       getTransitions("foyer",1)
     }
@@ -134,11 +134,11 @@ function getTransitions(roomid,run) {
       var details = "top:0;left:43%";
       var transitionTo = "uHall";
     } else if (run == 1) {
-      var details = "top:40%;right:-50px";
+      var details = "top:40%;right:0";
       var transitionTo = "kitchen";
       getTransitions("living",2)
     } else if (run == 2) {
-      var details = "top:40%;left:-50px";
+      var details = "top:40%;left:0";
       var transitionTo = "foyer";
       getTransitions("living",3)
     } else {
@@ -150,7 +150,7 @@ function getTransitions(roomid,run) {
     var details = "top:0;left:60%;";
     var transitionTo = "living";
   } else if (roomid == "bed") {
-    var details = "bottom:-50px;left:45%";
+    var details = "bottom:0;left:45%";
     var transitionTo = "uHall"
   } else if (roomid == "baseM") {
     if (run) {
@@ -166,16 +166,16 @@ function getTransitions(roomid,run) {
       var details = "top:40%;left:0;"
       var transitionTo = "living"
     } else {
-      var details = "bottom:-50px;left:15%";
+      var details = "bottom:0;left:15%";
       var transitionTo = "baseM"
       getTransitions("kitchen",1)
     }
   } else if (roomid == "uHall") {
     if (run == 3) {
-      var details = "bottom:-50px;left:43%";
+      var details = "bottom:0;left:43%";
       var transitionTo = "living";
     } else if (run == 1) {
-      var details = "top:-50px;left:44%";
+      var details = "top:0;left:44%";
       var transitionTo = "bed";
       getTransitions("uHall",2)
     } else if (run == 2) {
@@ -188,10 +188,10 @@ function getTransitions(roomid,run) {
       getTransitions("uHall",1)
     }
   } else if (roomid == "bed2") {
-    var details = "top:27%;left:-50px";
+    var details = "top:27%;left:0";
     var transitionTo = "uHall"
   } else if (roomid == "attic") {
-    var details = "right:-50px;top:40%";
+    var details = "right:0;top:40%";
     var transitionTo = "uHall"
   }
   var newclue = document.createElement("div")
