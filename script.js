@@ -56,11 +56,11 @@ function move(direction) {
       char.style.top = (parseInt(char.style.top) - 1) + "px";
     }
   } else if (direction == "r") {
-    if (irect.right < char.getBoundingClientRect().right) {
+    if (irect.right > char.getBoundingClientRect().right) {
       char.style.left = (parseInt(char.style.left) + 1) + "px";
     }
   } else if (direction == "d") {
-    if (irect.bottom < char.getBoundingClientRect().bottom) {
+    if (irect.bottom > char.getBoundingClientRect().bottom) {
       char.style.top = (parseInt(char.style.top) + 1) + "px";
     }
   }
