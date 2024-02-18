@@ -18,12 +18,12 @@ var rooms = {
 // Suspects
 
 var suspects = {
-  "Betty": false,
-  "Anita": false,
-  "Nicholas": false,
-  "Theodore": false,
-  "Pamala": false,
-  "Arthur": false
+  "Betty": {"isMurderer":false,"clueATTR":[]},
+  "Anita": {"isMurderer":false,"clueATTR":[]},
+  "Nicholas": {"isMurderer":false,"clueATTR":[]},
+  "Theodore": {"isMurderer":false,"clueATTR":[]},
+  "Pamala": {"isMurderer":false,"clueATTR":[]},
+  "Arthur": {"isMurderer":false,"clueATTR":[]}
 }
 
 // Extra Variables
@@ -36,7 +36,7 @@ var started = false;
 
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
-  suspects[murderer] = true;
+  suspects[murderer].isMurderer = true;
   rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
   rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
   rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
@@ -49,7 +49,7 @@ function resetCPOS() {
 
 function guess(elem1) {
   var gperson = elem1.getElementsByTagName("p")[0].innerHTML
-  if (suspects[gperson] == true) {
+  if (suspects[gperson].isMurderer == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
   } else {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
