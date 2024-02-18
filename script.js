@@ -110,7 +110,7 @@ function spawnClue(roomid) {
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
   intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {" + newclue.id + ".remove();clueAct('" + roomid + "'," + mcdata + ")};",1)
-  clueCont.appendChild(newclue)
+  imgFCont.appendChild(newclue)
 }
 
 function clueAct(roomid) {
