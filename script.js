@@ -4,6 +4,7 @@ var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala"]
 
 // Rooms
+
 var rooms = {
   "bed": false,
   "living": false,
@@ -15,6 +16,7 @@ var rooms = {
 }
 
 // Suspects
+
 var suspects = {
   "Betty": false,
   "Anita": false,
@@ -29,6 +31,8 @@ var mvar;
 var intJSON = {}
 var started = false;
 
+// Functions/Event Listeners
+
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
   suspects[murderer] = true;
@@ -36,6 +40,12 @@ function initalAssignment() {
   rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
   rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true;
 }
+
+function resetCPOS() {
+  char.style.left = (rimg.getBoundingClientRect().width / 2) + "px"
+  char.style.top = (rimg.getBoundingClientRect().height / 2) + "px"
+}
+resetCPOS()
 
 function guess(gperson) {
   if (suspects[gperson] == true) {
@@ -272,8 +282,3 @@ function touchesD(door) {
   )
 }
 
-function resetCPOS() {
-  char.style.left = (rimg.getBoundingClientRect().width / 2) + "px"
-  char.style.top = (rimg.getBoundingClientRect().height / 2) + "px"
-}
-resetCPOS()
