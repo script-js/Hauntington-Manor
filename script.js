@@ -127,7 +127,7 @@ function spawnClue(roomid) {
   newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON[" + newclue.id + "]);" + newclue.id + ".remove();clueAct('" + clueText + "')};",1)
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove();clueAct('" + clueText + "')};",1)
   imgTCont.appendChild(newclue)
 }
 
