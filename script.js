@@ -28,8 +28,6 @@ var suspects = {
 var mvar;
 var intJSON = {}
 var started = false;
-char.style.left = (rimg.getBoundingClientRect().right / 2) + "px"
-char.style.top = (rimg.getBoundingClientRect().bottom / 2) + "px"
 
 function initalAssignment() {
   var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))];
@@ -163,6 +161,23 @@ function getTransitions(roomid,run) {
       var transitionTo = "baseM"
       getTransitions("kitchen",1)
     }
+  } else if (roomid == "uHall") {
+    if (run == 3) {
+      var details = "bottom:-50px;left:43%";
+      var transitionTo = "living";
+    } else if (run == 1) {
+      var details = "top:-50px;left:44%";
+      var transitionTo = "bed";
+      getTransitions("uHall",2)
+    } else if (run == 2) {
+      var details = "top:17%;left:0";
+      var transitionTo = "attic";
+      getTransitions("uHall",3)
+    } else {
+      var details = "top:0;right:0";
+      var transitionTo = "bed2";
+      getTransitions("uHall",1)
+    }
   }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
@@ -255,3 +270,4 @@ function resetCPOS() {
   char.style.left = (rimg.getBoundingClientRect().right / 2) + "px"
   char.style.top = (rimg.getBoundingClientRect().bottom / 2) + "px"
 }
+resetCPOS()
