@@ -48,19 +48,19 @@ function guess(gperson) {
 function move(direction) {
   var irect = rimg.getBoundingClientRect()
   if (direction == "l") {
-    if (parseInt(char.style.left) > irect.left) {
+    if (char.getBoundingClientRect().left > irect.left) {
       char.style.left = (parseInt(char.style.left) - 1) + "px";
     }
   } else if (direction == "u") {
-    if (parseInt(char.style.top) > irect.top) {
+    if (char.getBoundingClientRect().top > irect.top) {
       char.style.top = (parseInt(char.style.top) - 1) + "px";
     }
   } else if (direction == "r") {
-    if (irect.right > parseInt(char.style.left)) {
+    if (irect.right > char.getBoundingClientRect().left) {
       char.style.left = (parseInt(char.style.left) + 1) + "px";
     }
   } else if (direction == "d") {
-    if (irect.bottom > parseInt(char.style.top)) {
+    if (irect.bottom > char.getBoundingClientRect().top) {
       char.style.top = (parseInt(char.style.top) + 1) + "px";
     }
   }
@@ -262,8 +262,8 @@ function touchesD(door) {
   var clRight = door.getBoundingClientRect().right + 20;
   var clTop = door.getBoundingClientRect().top - 20;
   var clBottom = door.getBoundingClientRect().bottom + 20;
-  var cLeft = parseInt(char.style.left);
-  var cTop = parseInt(char.style.top);
+  var cLeft = char.getBoundingClientRect().left
+  var cTop = char.getBoundingClientRect().top
   return (
     cLeft > clLeft
     && cLeft < clRight 
@@ -273,7 +273,7 @@ function touchesD(door) {
 }
 
 function resetCPOS() {
-  char.style.left = (rimg.getBoundingClientRect().right / 2) + "px"
-  char.style.top = (rimg.getBoundingClientRect().bottom / 2) + "px"
+  char.style.left = (rimg.getBoundingClientRect().width / 2) + "px"
+  char.style.top = (rimg.getBoundingClientRect().height / 2) + "px"
 }
 resetCPOS()
