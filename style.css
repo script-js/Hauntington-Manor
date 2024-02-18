@@ -195,15 +195,12 @@ h1 {
   margin-right: auto;
 }
 
-.susBox {
-  display:flex;
-  align-items:center
-}
-
 .guessB {
   width: 30%;
   transition: ease 200ms;
   border-radius: 15px;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .guessB:hover {
