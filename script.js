@@ -18,7 +18,7 @@ var rooms = {
 // Suspects
 
 var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":[]},
+  "Betty": {"isMurderer":false,"clueATTR":[""]},
   "Anita": {"isMurderer":false,"clueATTR":[]},
   "Nicholas": {"isMurderer":false,"clueATTR":[]},
   "Theodore": {"isMurderer":false,"clueATTR":[]},
@@ -49,8 +49,10 @@ function guess(elem1) {
   var gperson = elem1.getElementsByTagName("p")[0].innerHTML
   if (suspects[gperson].isMurderer == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
+    setTimeout(function() {location.replace("message/winSP")},10000)
   } else {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
+    setTimeout(function() {location.replace("message/loseSP")},10000)
   }
 }
 
@@ -104,7 +106,6 @@ function spawnClue(roomid) {
   if (roomid == "testid") {
     var details = "left:560px;top:80px;background:red;";
   }
-
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.style = details;
