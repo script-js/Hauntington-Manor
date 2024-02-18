@@ -207,9 +207,6 @@ function getTransitions(roomid,run) {
   intJSON[newclue.id] = setInterval("if (touchesD(" + newclue.id + ")) {rChange('" + transitionTo + "')};",1)
   imgTCont.appendChild(newclue)
 }
-
-resetCPOS()
-getTransitions("foyer")
  
 function rChange(roomid) {
   var doors = imgTCont.querySelectorAll(".invisiclue")
@@ -285,5 +282,13 @@ function touchesD(door) {
 }
 
 function cShow() {
-  popup("<p>&nbsp;</p><h1>Who Did It?</h1><div class='susBox'><div class='guessB' onclick='guess(this)'><img src='src/suspects/betty.FEXT'><p>Betty</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/anita.FEXT'><p>Anita</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/nicholas.FEXT'><p>Nicholas</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/theodore.FEXT'><p>Theodore</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/pamala.FEXT'><p>Pamala</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/arthur.FEXT'><p>Arthur</p></div></div>")
+  popup("<p>&nbsp;</p><h1>Who Did It?</h1><div class='guessB' onclick='guess(this)'><img src='src/suspects/betty.FEXT'><p>Betty</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/anita.FEXT'><p>Anita</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/nicholas.FEXT'><p>Nicholas</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/theodore.FEXT'><p>Theodore</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/pamala.FEXT'><p>Pamala</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/arthur.FEXT'><p>Arthur</p></div>")
 }
+
+function rungame() {
+  initialAssignment()
+  resetCPOS()
+  getTransitions("foyer")
+}
+
+setTimeout(rungame,1000)
