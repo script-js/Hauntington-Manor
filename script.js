@@ -49,10 +49,10 @@ function guess(elem1) {
   var gperson = elem1.getElementsByTagName("p")[0].innerHTML
   if (suspects[gperson].isMurderer == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
-    setTimeout(function() {location.replace("message/winSP")},10000)
+    setTimeout(function() {location.replace("message/winSP")},6000)
   } else {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
-    setTimeout(function() {location.replace("message/loseSP")},10000)
+    setTimeout(function() {location.replace("message/loseSP")},6000)
   }
 }
 
