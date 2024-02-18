@@ -142,7 +142,7 @@ function getTransitions(roomid,run) {
     var transitionTo = "living";
   } else if (roomid == "bed") {
     var details = "bottom:-50px;left:45%";
-    var transitionTo = "living"
+    var transitionTo = "uHall"
   } else if (roomid == "baseM") {
     if (run) {
       var details = "top:0;left:0;"
