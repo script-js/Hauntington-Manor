@@ -286,7 +286,7 @@ function cShow() {
 }
 
 function rungame() {
-  initialAssignment()
+  initalAssignment()
   resetCPOS()
   getTransitions("foyer")
 }
