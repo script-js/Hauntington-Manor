@@ -1,7 +1,7 @@
 // Assignments
 
 var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
-var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala"]
+var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
 
 // Rooms
 
@@ -22,7 +22,8 @@ var suspects = {
   "Anita": false,
   "Nicholas": false,
   "Theodore": false,
-  "Pamala": false
+  "Pamala": false,
+  "Arthur": false
 }
 
 // Extra Variables
@@ -46,7 +47,8 @@ function resetCPOS() {
   char.style.top = (rimg.getBoundingClientRect().height / 2) + "px"
 }
 
-function guess(gperson) {
+function guess(elem1) {
+  var gperson = elem1.getElementsByTagName("p")[0].innerHTML
   if (suspects[gperson] == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
   } else {
@@ -282,3 +284,6 @@ function touchesD(door) {
   )
 }
 
+function cShow() {
+  popup("<p>&nbsp;</p><h1>Who Did It?</h1><div class='susBox'><div class='guessB' onclick='guess(this)'><img src='src/suspects/betty.FEXT'><p>Betty</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/anita.FEXT'><p>Anita</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/nicholas.FEXT'><p>Nicholas</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/theodore.FEXT'><p>Theodore</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/pamala.FEXT'><p>Pamala</p></div><div class='guessB' onclick='guess(this)'><img src='src/suspects/arthur.FEXT'><p>Arthur</p></div></div>")
+}
