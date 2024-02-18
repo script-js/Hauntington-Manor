@@ -45,7 +45,6 @@ function resetCPOS() {
   char.style.left = (rimg.getBoundingClientRect().width / 2) + "px"
   char.style.top = (rimg.getBoundingClientRect().height / 2) + "px"
 }
-resetCPOS()
 
 function guess(gperson) {
   if (suspects[gperson] == true) {
@@ -207,6 +206,7 @@ function getTransitions(roomid,run) {
   imgTCont.appendChild(newclue)
 }
 
+resetCPOS()
 getTransitions("foyer")
  
 function rChange(roomid) {
