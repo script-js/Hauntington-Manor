@@ -24,11 +24,11 @@ rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true
 
 var suspects = {
   "Betty": {"isMurderer":false,"clueATTR":["NM","IM"]},
-  "Anita": {"isMurderer":false,"clueATTR":[]},
-  "Nicholas": {"isMurderer":false,"clueATTR":[]},
-  "Theodore": {"isMurderer":false,"clueATTR":[]},
-  "Pamala": {"isMurderer":false,"clueATTR":[]},
-  "Arthur": {"isMurderer":false,"clueATTR":[]}
+  "Anita": {"isMurderer":false,"clueATTR":["NM","IM"]},
+  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM"]},
+  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM"]},
+  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM"]},
+  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM"]}
 }
 
 // Extra Variables
