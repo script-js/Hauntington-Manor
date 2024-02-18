@@ -15,8 +15,7 @@ body {background: #1c2028}
 
 #char {
   position: absolute;
-  left: 30px;
-  top: 30px;
+  width: 15%;
 }
 
 html,body {
