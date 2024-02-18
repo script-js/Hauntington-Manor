@@ -201,10 +201,15 @@ h1 {
 }
 
 .guessB {
-  width:100px;
+  width: 30%;
   transition: ease 200ms;
+  border-radius: 15px;
 }
 
 .guessB:hover {
   background: lightgray;
+}
+
+.guessB img {
+  border-radius: 50px
 }
