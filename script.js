@@ -104,7 +104,7 @@ window.addEventListener("keyup", (event) => {
 
 function spawnClue(roomid) {
   if (rooms[roomid] == true) {
-    var iurl = "weapons/" + weapon + ".png";
+    var iurl = "src/weapons/" + weapon + ".png";
     var clueText = "You found the murder weapon!";
   } else if (rooms[roomid] == "point") {
     var npcn = charPicker[(Math.floor(Math.random() * charPicker.length))];
@@ -136,12 +136,14 @@ function spawnClue(roomid) {
   newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
   newclue.style = details;
   newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clearInterval(intJSON." + newclue.id + ");" + newclue.id + ".remove();clueAct('" + clueText + "')};",1)
+  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clueAct('" + clueText + "','" + iurl + "','" + newclue.id + "')};",1)
   imgTCont.appendChild(newclue)
 }
 
-function clueAct(message) {
-  popup("<h1>Clue Found!</h1><p>" + message + "</p>")
+function clueAct(message,image,cid) {
+  clearInterval(intJSON[cid])
+  document.getElementById(cid).remove();
+  popup("<img width='50%' src='" + image + "'><h1>Clue Found!</h1><p>" + message + "</p>")
   window.onclick = function() {popup();window.onclick = null};
 }
 
