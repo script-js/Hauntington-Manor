@@ -213,7 +213,7 @@ function spawnClue(roomid) {
 function clueAct(message,image,cid,room,char) {
   if (char == "MW") {
     foundMW = true;
-    var messageC = message
+    var messagec = message
   } else {
     suspects[char].clueATTR[2] = true;
     var messagec = char + ' says "' + message + '"';
