@@ -2,7 +2,7 @@
 
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
 var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
-var weapon = "Knife"
+var weapon = "knife"
 
 // Rooms
 
