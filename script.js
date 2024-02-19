@@ -92,7 +92,7 @@ function getRandRoom() {
   var exists = false
   Object.keys(suspects).forEach(function (k) {
     if (chosenRD == suspects[k].clueATTR[2]) {
-      var exists = true;
+      exists = true;
     }
   })
   if (exists) {
