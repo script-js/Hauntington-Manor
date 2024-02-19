@@ -95,10 +95,10 @@ function getRandRoom() {
       var exists = true;
     }
   })
-  if (!exists) {
-    return chosenRD;
-  } else {
+  if (exists) {
     return getRandRoom()
+  } else {
+    return chosenRD
   }
 }
 
