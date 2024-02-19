@@ -39,7 +39,7 @@ function getReadableRoom(roomid) {
 }
 
 // Suspects
-// Clue Format: [message(0),ifmurderer(1),seen(2)]
+// Clue Format: [message(0),ifmurderer(1),room(2)]
 
 var suspects = {
   "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a curly-haired old lady","alliance":false},
@@ -87,7 +87,23 @@ function getRR() {
     return getRR()
   }
 }
+function getRandRoom() {
+  var cnum = (Math.floor(Math.random() * roomPicker.length))
+  var chosenRD = roomPicker[cnum]
+  Object.keys(suspects).forEach(function (k) {
+    if (chosenRD == suspects[k].clueATTR[2]) {
+      var exists = true;
+    }
+  })
+  if (!exists) {
+    return chosenRD;
+  } else {
+    return getRandRoom()
+  }
+}
+
 Object.keys(suspects).forEach(function (k) {
+  suspects[k].clueATTR[2] = getRandRoom()
   suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
   suspects[k].clueATTR[0] = getRR()
 })
@@ -166,18 +182,18 @@ function spawnClue(roomid) {
       var nocontinue = true
     }
   } else if (rooms[roomid] == "point") {
-    var npcn = charPicker[(Math.floor(Math.random() * charPicker.length))];
+    Object.keys(suspects).forEach(function (k) {
+      if (suspects[k].clueATTR[2] == roomid) {
+        var npcn = k;
+      }
+    })
     var npc = suspects[npcn]
-    if (npc.clueATTR[2] == false) {
       var iurl = "src/suspects/" + npcn.toLowerCase() + ".png"
       if (npc.isMurderer || npc.alliance) {
         var clueText = npc.clueATTR[1]
       } else {
         var clueText = npc.clueATTR[0]
       }
-    } else {
-      var nocontinue = 1;
-    }
   }
   if (roomid == "living") {
     var details = "right:1%;top:14%;";
@@ -218,7 +234,6 @@ function clueAct(message,image,cid,room,char) {
     var messagec = message
     cluebox = cluebox + "<p>The murder weapon was in the " + room + "</p>"
   } else {
-    suspects[char].clueATTR[2] = true;
     var messagec = char + ' says "' + message + '"';
     cluebox = cluebox + "<p>" + messagec + "</p>"
   }
