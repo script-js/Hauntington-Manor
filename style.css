@@ -246,3 +246,10 @@ h1 {
   padding: 15px;
   font-size: 20px;
 }
+
+.popupCB {
+  background: black;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+}
