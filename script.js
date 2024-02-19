@@ -97,7 +97,8 @@ function resetCPOS() {
 }
 
 function guess(elem1) {
-  var gperson = elem1.getElementsByTagName("p")[0].innerHTML
+  var gperson = elem1.getElementsByTagName("p")[0].innerHTML;
+  sessionStorage.setItem("murderer",murderer)
   if (suspects[gperson].isMurderer == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
     setTimeout(function() {location.replace("message/winSP")},6000)
