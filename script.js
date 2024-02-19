@@ -386,6 +386,7 @@ function cShow() {
 function rungame() {
   resetCPOS()
   getTransitions("foyer")
+  setInterval(count,300)
 }
 
 setTimeout(rungame,1000)
@@ -404,7 +405,7 @@ function count() {
   if (trHour == 12) {
     popup("<h1>Times Up!</h1>",true)
     sessionStorage.setItem("murderer",murderer)
-    setTimeout(function() {location.replace("message/loseSP")})
+    setTimeout(function() {location.replace("message/loseSP")},2000)
   } else {
     etabox.innerHTML = trHour + ":" + minTXT
   }
