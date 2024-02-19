@@ -205,9 +205,10 @@ h1 {
 
 .guessB:hover {
   background: lightgray;
-  .guessB p {
-    color: black
-  }
+}
+
+.guessB:hover p {
+  color: black
 }
 
 .guessB img {
