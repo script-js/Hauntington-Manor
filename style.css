@@ -214,12 +214,14 @@ h1 {
 
 .uibtn {
   border-radius: 50px;
-  background: black;
-  border: 3px solid gray;
-  outline: 1px solid #1f3d3b;
+  background: #12161b;
+  border: 3px solid #525252;
+  outline: 3px solid #1f3d3b;
   transition: ease 200ms;
+  padding: 15px;
+  width: 20px;
 }
 
 .uibtn:hover {
-  background: #1f3d3b;
+  background: #525252;
 }
