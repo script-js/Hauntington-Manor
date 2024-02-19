@@ -8,6 +8,12 @@
   </head>
   <body style="background:black;text-align:center;">
     <h1>You Lost!</h1>
+    <p id="mtext"></p>
+    <script>
+      if (sessionStorage.getItem("murderer")) {
+        mtext.innerHTML = sessionStorage.getItem("murderer") + " was the murderer."
+      }
+    </script>
     <a href="/"><button class="startB" style="animation:none">Quit to Title</button></a>
   </body>
 </html>
