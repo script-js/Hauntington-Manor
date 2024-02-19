@@ -17,13 +17,33 @@ var rooms = {
   "attic": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
   "kitchen": rcOPT[(Math.floor(Math.random() * rcOPT.length))]
 }
-rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true
+var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))]
+rooms[mroom] = true;
+function getReadableRoom(roomid) {
+  if (roomid == "bed") {
+    return "Bedroom"
+  } else if (roomid == "living") {
+    return "Living Room"
+  } else if (roomid == "bed2") {
+    return "Second Bedroom"
+  } else if (roomid == "lounge") {
+    return "Lounge"
+  } else if (roomid == "baseM") {
+    return "Basement"
+  } else if (roomid == "attic") {
+    return "Attic"
+  } else if (roomid == "kitchen") {
+    return "Kitchen"
+  } else {
+    return roomid
+  }
+}
 
 // Suspects
 // Clue Format: [message(0),ifmurderer(1),seen(2)]
 
 var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false]},
+  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc"},
   "Anita": {"isMurderer":false,"clueATTR":["NM","IM",false]},
   "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM",false]},
   "Theodore": {"isMurderer":false,"clueATTR":["NM","IM",false]},
@@ -37,7 +57,11 @@ var mvar;
 var intJSON = {};
 var foundMW = false;
 var started = false;
+
+// More Assignments
 suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
+var responsesNM = ["I thought I saw someone go into the " + getReadableRoom(mroom),"When I walked past where the " + weapon + " usually was, I noticed it wasn't there.","","",""]
+var responsesIM;
 
 // Functions/Event Listeners
 
