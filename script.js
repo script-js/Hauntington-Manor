@@ -66,6 +66,8 @@ var intJSON = {};
 var foundMW = false;
 var started = false;
 var cluebox = "<h1>Clues</h1>";
+var trMin = 0;
+var trHour = 0;
 
 // More Assignments
 var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
@@ -340,7 +342,7 @@ function rChange(roomid) {
   }
 }
 
-function popup(text) {
+function popup(text,noclose) {
   if (!text) {
     popupBox.style.height = "2px"
     popupBox.innerHTML = "";
@@ -352,7 +354,13 @@ function popup(text) {
   setTimeout(function() {
     popupBox.style.height = "98%"
   },50)
-    setTimeout(function() {popupBox.innerHTML = text + "<p></p><button class='popupCB' onclick='popup()'>Close</button>";},400)
+    setTimeout(function() {
+      if (!noclose) {
+        popupBox.innerHTML = text + "<p></p><button class='popupCB' onclick='popup()'>Close</button>";
+      } else {
+        popupBox.innerHTML = text
+      }
+    },400)
   }
 }
 
@@ -381,3 +389,23 @@ function rungame() {
 }
 
 setTimeout(rungame,1000)
+
+function count() {
+  trMin = trMin + 1
+  if (trMin == 60) {
+    trMin = 0
+    trHour = trHour + 1
+  }
+  if (trMin.toString().length == 1) {
+    var minTXT = "0" + trMin
+  } else {
+    var minTXT = trMin
+  }
+  if (trHour == 12) {
+    popup("<h1>Times Up!</h1>",true)
+    sessionStorage.setItem("murderer",murderer)
+    setTimeout(function() {location.replace("message/loseSP")})
+  } else {
+    etabox.innerHTML = trHour + ":" + minTXT
+  }
+}
