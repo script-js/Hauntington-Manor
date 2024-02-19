@@ -65,6 +65,7 @@ var mvar;
 var intJSON = {};
 var foundMW = false;
 var started = false;
+var cluebox = "<h1>Clues</h1>";
 
 // More Assignments
 var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
@@ -218,7 +219,9 @@ function clueAct(message,image,cid,room,char) {
   rooms[room] = false;
   clearInterval(intJSON[cid])
   document.getElementById(cid).remove();
-  popup("<img width='50%' src='" + image + "'><h1>Clue Found!</h1><p>" + message + "</p>")
+  var messagec = char + ' says "' + message + '"';
+  cluebox = cluebox + "<p>" + messagec + "</p>"
+  popup("<img width='50%' src='" + image + "'><h1>Clue Found!</h1><p>" + messagec + "</p>")
   window.onclick = function() {popup();window.onclick = null};
 }
 
