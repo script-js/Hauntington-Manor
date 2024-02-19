@@ -185,7 +185,7 @@ function spawnClue(roomid) {
   } else if (rooms[roomid] == "point") {
     Object.keys(suspects).forEach(function (k) {
       if (suspects[k].clueATTR[2] == roomid) {
-        var npcn = k;
+        npcn = k;
       }
     })
     var npc = suspects[npcn]
