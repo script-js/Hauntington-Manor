@@ -20,21 +20,22 @@ var rooms = {
 rooms[roomPicker[(Math.floor(Math.random() * roomPicker.length))]] = true
 
 // Suspects
-// Clue Format: [message(0),ifmurderer(1)]
+// Clue Format: [message(0),ifmurderer(1),seen(2)]
 
 var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":["NM","IM"]},
-  "Anita": {"isMurderer":false,"clueATTR":["NM","IM"]},
-  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM"]},
-  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM"]},
-  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM"]},
-  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM"]}
+  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false]},
+  "Anita": {"isMurderer":false,"clueATTR":["NM","IM",false]},
+  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM",false]},
+  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM",false]},
+  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM",false]},
+  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM",false]}
 }
 
 // Extra Variables
 
 var mvar;
-var intJSON = {}
+var intJSON = {};
+var foundMW = false;
 var started = false;
 suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
 
@@ -106,14 +107,22 @@ function spawnClue(roomid) {
   if (rooms[roomid] == true) {
     var iurl = "src/weapons/" + weapon + ".png";
     var clueText = "You found the murder weapon!";
+    var npcn = "MW";
+    if (foundMW == true) {
+      var nocontinue = true
+    }
   } else if (rooms[roomid] == "point") {
     var npcn = charPicker[(Math.floor(Math.random() * charPicker.length))];
     var npc = suspects[npcn]
-    var iurl = "src/suspects/" + npcn.toLowerCase() + ".png"
-    if (npc.isMurderer) {
-      var clueText = npc.clueATTR[1]
+    if (npc.clueATTR[2] == false) {
+      var iurl = "src/suspects/" + npcn.toLowerCase() + ".png"
+      if (npc.isMurderer) {
+        var clueText = npc.clueATTR[1]
+      } else {
+        var clueText = npc.clueATTR[0]
+      }
     } else {
-      var clueText = npc.clueATTR[0]
+      var nocontinue = 1;
     }
   }
   if (roomid == "living") {
@@ -131,16 +140,26 @@ function spawnClue(roomid) {
   } else if (roomid == "attic") {
     var details = "top:25%;right:37%"
   }
-  var newclue = document.createElement("div")
-  newclue.classList = "invisiclue";
-  newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
-  newclue.style = details;
-  newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-  intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clueAct('" + clueText + "','" + iurl + "','" + newclue.id + "')};",1)
-  imgTCont.appendChild(newclue)
+  if (!nocontinue) {
+    var newclue = document.createElement("div")
+    newclue.classList = "invisiclue";
+    newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
+    newclue.style = details;
+    newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
+    intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clueAct('" + clueText + "','" + iurl + "','" + newclue.id + "','" + roomid + "','" + npcn + "')};",1)
+    imgTCont.appendChild(newclue)
+  } else if (nocontinue == 1) {
+    spawnClue(roomid)
+  }
 }
 
-function clueAct(message,image,cid) {
+function clueAct(message,image,cid,room,char) {
+  if (char == "MW") {
+    foundMW = true;
+  } else {
+    suspects[char].clueATTR[2] = true
+  }
+  rooms[room] = false;
   clearInterval(intJSON[cid])
   document.getElementById(cid).remove();
   popup("<img width='50%' src='" + image + "'><h1>Clue Found!</h1><p>" + message + "</p>")
