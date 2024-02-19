@@ -400,12 +400,11 @@ function cShow() {
 }
 
 function rungame() {
+  popup()
   resetCPOS()
   getTransitions("foyer")
   setInterval(count,300)
 }
-
-setTimeout(rungame,1000)
 
 function count() {
   trMin = trMin + 1
@@ -425,4 +424,12 @@ function count() {
   } else {
     etabox.innerHTML = trHour + ":" + minTXT
   }
+}
+
+if (localStorage.getItem("tutorial")) {
+  popup("<h1>Get Ready!</h1>")
+  setTimeout(rungame,3000)
+} else {
+  localStorage.setItem("tutorial","done")
+  location.replace("tutorial")
 }
