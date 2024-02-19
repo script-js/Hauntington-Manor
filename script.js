@@ -214,6 +214,7 @@ function clueAct(message,image,cid,room,char) {
   if (char == "MW") {
     foundMW = true;
     var messagec = message
+    cluebox = cluebox + "<p>The murder weapon was in the " + room + "</p>"
   } else {
     suspects[char].clueATTR[2] = true;
     var messagec = char + ' says "' + message + '"';
