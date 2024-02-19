@@ -17,13 +17,7 @@ var rooms = {
   "kitchen": "point"
 }
 var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
-var nroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
-if (nroom != mroom) {
-  rooms[mroom] = true;
-  rooms[nroom] = false;
-} else {
-  rooms["living"] = false;
-}
+rooms[mroom] = true
 function getReadableRoom(roomid) {
   if (roomid == "bed") {
     return "Bedroom"
