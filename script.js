@@ -2,23 +2,28 @@
 
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
 var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
-var rcOPT = [false,"point"]
 var weapons = ["Knife","Pipe","Rope","Glass Shard","Bat"]
 var weapon = weapons[(Math.floor(Math.random() * weapons.length))]
 
 // Rooms
 
 var rooms = {
-  "bed": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
-  "living": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
-  "bed2": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
-  "lounge": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
-  "baseM": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
-  "attic": rcOPT[(Math.floor(Math.random() * rcOPT.length))],
-  "kitchen": rcOPT[(Math.floor(Math.random() * rcOPT.length))]
+  "bed": "point",
+  "living": "point",
+  "bed2": "point",
+  "lounge": "point",
+  "baseM": "point",
+  "attic": "point",
+  "kitchen": "point"
 }
-var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))]
-rooms[mroom] = true;
+var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
+var nroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
+if (nroom != mroom) {
+  rooms[mroom] = true;
+  rooms[nroom] = false;
+} else {
+  rooms["living"] = false;
+}
 function getReadableRoom(roomid) {
   if (roomid == "bed") {
     return "Bedroom"
@@ -167,7 +172,7 @@ function spawnClue(roomid) {
     var npc = suspects[npcn]
     if (npc.clueATTR[2] == false) {
       var iurl = "src/suspects/" + npcn.toLowerCase() + ".png"
-      if (npc.isMurderer) {
+      if (npc.isMurderer || npc.alliance) {
         var clueText = npc.clueATTR[1]
       } else {
         var clueText = npc.clueATTR[0]
@@ -197,9 +202,14 @@ function spawnClue(roomid) {
     newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
     newclue.style = details;
     newclue.id = "clue" +  Math.ceil(Math.random() * 1000);
-    intJSON[newclue.id] = setInterval("if (touches(" + newclue.id + ")) {clueAct('" + clueText + "','" + iurl + "','" + newclue.id + "','" + roomid + "','" + npcn + "')};",1)
+    intJSON[newclue.id] = setInterval(function() {
+      if (touches(document.getElementById(newclue.id))) {
+        clueAct(clueText,iurl,newclue.id,roomid,npcn)
+      }
+    },1)
     imgTCont.appendChild(newclue)
-  } else if (nocontinue == 1) {
+  }
+  if (nocontinue == 1) {
     spawnClue(roomid)
   }
 }
