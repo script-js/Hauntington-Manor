@@ -37,11 +37,6 @@ var mvar;
 var intJSON = {}
 var started = false;
 suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
-Object.keys(suspects).forEach(function (k) {
-  if (suspects[k].isMurderer == true) {
-    window.mcdata = suspects[k].clueATTR;
-  }
-})
 
 // Functions/Event Listeners
 
@@ -121,7 +116,21 @@ function spawnClue(roomid) {
       var clueText = npc.clueATTR[0]
     }
   }
-  var details = "left:0;top:0;"
+  if (roomid == "living") {
+    var details = "right:1%;top:14%;";
+  } else if (roomid == "lounge") {
+    var details = "top:40%;right:18%";
+  } else if (roomid == "kitchen") {
+    var details = "top:1%;left:23%";
+  } else if (roomid == "baseM") {
+    var details = "top:10%;left:20%"
+  } else if (roomid == "bed") {
+    var details = "left:2%;top:2%"
+  } else if (roomid == "bed2") {
+    var details = "top:2%;right:2%"
+  } else if (roomid == "attic") {
+    var details = "top:25%;right:37%"
+  }
   var newclue = document.createElement("div")
   newclue.classList = "invisiclue";
   newclue.innerHTML = "<img src='" + iurl + "' width='90%'>";
