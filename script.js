@@ -120,10 +120,10 @@ function guess(elem1) {
   var gperson = elem1.getElementsByTagName("p")[0].innerHTML;
   sessionStorage.setItem("murderer",murderer)
   if (suspects[gperson].isMurderer == true) {
-    popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
+    popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>",true)
     setTimeout(function() {location.replace("message/winSP")},6000)
   } else {
-    popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
+    popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>",true)
     setTimeout(function() {location.replace("message/loseSP")},6000)
   }
 }
