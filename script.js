@@ -275,26 +275,11 @@ function popup(text) {
   }
 }
 
-function touches(clue) {
-  var clLeft = parseInt(clue.style.left) - 20;
-  var clRight = parseInt(clue.style.left) + 120;
-  var clTop = parseInt(clue.style.top) - 20;
-  var clBottom = parseInt(clue.style.top) + 120;
-  var cLeft = parseInt(char.style.left);
-  var cTop = parseInt(char.style.top);
-  return (
-    cLeft > clLeft
-    && cLeft < clRight 
-    && cTop > clTop
-    && cTop < clBottom
-  )
-}
-
-function touchesD(door) {
-  var clLeft = door.getBoundingClientRect().left - 20;
-  var clRight = door.getBoundingClientRect().right + 20;
-  var clTop = door.getBoundingClientRect().top - 20;
-  var clBottom = door.getBoundingClientRect().bottom + 20;
+function touches(elem1) {
+  var clLeft = elem1.getBoundingClientRect().left - 20;
+  var clRight = elem1.getBoundingClientRect().right + 20;
+  var clTop = elem1.getBoundingClientRect().top - 20;
+  var clBottom = elem1.getBoundingClientRect().bottom + 20;
   var cLeft = char.getBoundingClientRect().left
   var cTop = char.getBoundingClientRect().top
   return (
