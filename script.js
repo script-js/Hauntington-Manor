@@ -371,9 +371,9 @@ function popup(text,noclose) {
   },50)
     setTimeout(function() {
       if (!noclose) {
-        popupBox.innerHTML = text + "<p></p><button class='popupCB' onclick='popup()'>Close</button>";
+        popupBox.innerHTML = "<p>&nbsp;</p>" + text + "<p></p><button class='popupCB' onclick='popup()'>Close</button>";
       } else {
-        popupBox.innerHTML = text
+        popupBox.innerHTML = "<p>&nbsp;</p>" + text
       }
     },400)
   }
