@@ -91,7 +91,7 @@ function getRandRoom() {
   var chosenRD = roomPicker[cnum]
   var exists = false
   Object.keys(suspects).forEach(function (k) {
-    if (chosenRD == suspects[k].clueATTR[2] && chosenRD != mroom) {
+    if (chosenRD == suspects[k].clueATTR[2] && chosenRD == mroom) {
       exists = true;
     }
   })
