@@ -213,16 +213,16 @@ function spawnClue(roomid) {
 function clueAct(message,image,cid,room,char) {
   if (char == "MW") {
     foundMW = true;
+    var messageC = message
   } else {
-    suspects[char].clueATTR[2] = true
+    suspects[char].clueATTR[2] = true;
+    var messagec = char + ' says "' + message + '"';
+    cluebox = cluebox + "<p>" + messagec + "</p>"
   }
   rooms[room] = false;
   clearInterval(intJSON[cid])
   document.getElementById(cid).remove();
-  var messagec = char + ' says "' + message + '"';
-  cluebox = cluebox + "<p>" + messagec + "</p>"
   popup("<img width='50%' src='" + image + "'><h1>Clue Found!</h1><p>" + messagec + "</p>")
-  window.onclick = function() {popup();window.onclick = null};
 }
 
 function getTransitions(roomid,run) {
@@ -352,6 +352,7 @@ function popup(text) {
     popupBox.style.height = "98%"
   },50)
     setTimeout(function() {popupBox.innerHTML = text;},400)
+    window.onclick = function() {popup();window.onclick = null}
   }
 }
 
