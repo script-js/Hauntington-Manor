@@ -351,8 +351,7 @@ function popup(text) {
   setTimeout(function() {
     popupBox.style.height = "98%"
   },50)
-    setTimeout(function() {popupBox.innerHTML = text;},400)
-    window.onclick = function() {popup();window.onclick = null}
+    setTimeout(function() {popupBox.innerHTML = text + "<button class='popupCB' onclick='popup()'>Close</button>";},400)
   }
 }
 
