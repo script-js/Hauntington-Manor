@@ -43,12 +43,21 @@ function getReadableRoom(roomid) {
 // Clue Format: [message(0),ifmurderer(1),seen(2)]
 
 var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc"},
-  "Anita": {"isMurderer":false,"clueATTR":["NM","IM",false]},
-  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM",false]},
-  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM",false]},
-  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM",false]},
-  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM",false]}
+  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a curly-haired old lady","alliance":false},
+  "Anita": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a timid-looking woman wearing a white dress","alliance":false},
+  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a man with a brown suit and brown hair","alliance":false},
+  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a skinny-looking young man","alliance":false},
+  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"an angry-looking woman with frizzy brown hair","alliance":false},
+  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"an old man with a blue shirt","alliance":false}
+}
+
+function getRandomNM() {
+  var r1r = charPicker[(Math.floor(Math.random() * charPicker.length))];
+  if (suspects[r1r].alliance == false && suspects[r1r].isMurderer == false) {
+    return r1r
+  } else {
+    return getRandomNM()
+  }
 }
 
 // Extra Variables
@@ -59,9 +68,27 @@ var foundMW = false;
 var started = false;
 
 // More Assignments
-suspects[charPicker[(Math.floor(Math.random() * charPicker.length))]].isMurderer = true;
-var responsesNM = ["I thought I saw someone go into the " + getReadableRoom(mroom),"When I walked past where the " + weapon + " usually was, I noticed it wasn't there.","","",""]
-var responsesIM;
+var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
+var al1 = charPicker[(Math.floor(Math.random() * charPicker.length))]
+var al2 = charPicker[(Math.floor(Math.random() * charPicker.length))]
+suspects[murderer].isMurderer = true;
+suspects[al1].alliance = true;
+suspects[al2].alliance = true;
+var responsesNM = ["I thought I saw someone go into the " + getReadableRoom(mroom),"When I walked past where the " + weapon + " usually was, I noticed it wasn't there.","I saw " + suspects[murderer].desc + " going into the " + getReadableRoom(mroom),al1 + " has been acting weird",al2 + " has been acting weird","I heard people yelling in the " + getReadableRoom(mroom)]
+function getRR() {
+  var cnum = (Math.floor(Math.random() * responsesNM.length))
+  var chosenR = responsesNM[cnum]
+  if (chosenR) {
+    return chosenR;
+    responsesNM[cnum] = false
+  } else {
+    return getRR()
+  }
+}
+Object.keys(suspects).forEach(function (k) {
+  suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
+  suspects[k].clueATTR[0] = getRR()
+})
 
 // Functions/Event Listeners
 
