@@ -427,7 +427,7 @@ function count() {
 }
 
 if (localStorage.getItem("tutorial")) {
-  popup("<h1>Get Ready!</h1>")
+  popup("<h1>Get Ready!</h1>",true)
   setTimeout(rungame,3000)
 } else {
   localStorage.setItem("tutorial","done")
