@@ -2,8 +2,7 @@
 
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
 var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
-var weapons = ["Knife","Pipe","Rope","Glass Shard","Bat"]
-var weapon = weapons[(Math.floor(Math.random() * weapons.length))]
+var weapon = "Knife"
 
 // Rooms
 
@@ -176,7 +175,7 @@ window.addEventListener("keyup", (event) => {
 
 function spawnClue(roomid) {
   if (rooms[roomid] == true) {
-    var iurl = "src/weapons/" + weapon + ".png";
+    var iurl = "src/" + weapon + ".png";
     var clueText = "You found the murder weapon!";
     var npcn = "MW";
     if (foundMW == true) {
