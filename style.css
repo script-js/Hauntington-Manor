@@ -271,3 +271,14 @@ h1 {
   color: white;
   cursor: pointer;
 }
+
+.hostTitle {
+  padding: 10px;
+  font-size: 40px;
+  background: white;
+  color: black;
+}
+
+.hostTitle img {
+  width: 100px;
+}
