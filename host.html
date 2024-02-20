@@ -7,6 +7,14 @@
     <title>Hauntington Manor - Multiplayer</title>
   </head>
   <body>
+    <div class="hostTitle"><img src="src/icon.png">Hauntington Manor</div>
+    <div id="players"></div>
+    <div id="hostBox"><h1 class='hostPin'>Loading Pin...</h1></div>
+    <script>
+      function pinShow() {
+        hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1>"
+      }
+    </script>
     <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -35,7 +43,7 @@ const firebaseConfig = {
           if (snapshot.exists()) {
             var gdata = snapshot.val();
             if (gdata.started == true) {
-              alert()
+              pinShow()
             }
           }
       })
