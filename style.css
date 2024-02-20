@@ -278,11 +278,10 @@ h1 {
 }
 
 .hostTitle {
-  padding: 10px;
   font-size: 40px;
   background: white;
   color: black;
-  width: fit-content;
+  width: 30%;
 }
 
 .hostTitle img {
