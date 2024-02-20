@@ -69,6 +69,8 @@ var trMin = 0;
 var trHour = 0;
 
 // More Assignments
+var mpcode = false;
+if (sessionStorage.getItem("multiplayer")) {mpcode = sessionStorage.getItem("multiplayer")}
 var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
 var al1 = charPicker[(Math.floor(Math.random() * charPicker.length))]
 var al2 = charPicker[(Math.floor(Math.random() * charPicker.length))]
