@@ -136,11 +136,13 @@ Object.keys(suspects).forEach(function (k) {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);  
   window.newid = Math.ceil(Math.random() * (20000000 - 10000000) + 10000000)
+      set(ref(getDatabase(), 'gameid/' + newid), {
+        "al1": al1,
+        "al2": al2,
+        "murderer": murderer
+      });
       set(ref(getDatabase(), 'gameid/' + newid + "/rooms"), rooms);
       set(ref(getDatabase(), 'gameid/' + newid + "/suspects"), suspects);
-      set(ref(getDatabase(), 'gameid/' + newid + "/rooms"), {
-        
-      });
       get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
           if (snapshot.exists()) {
             pinShow()
