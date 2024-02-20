@@ -285,15 +285,15 @@ h1 {
 }
 .hostTitle p {
   padding: 30%;
-  display: inline
+  display: inline;
 }
 
 #hostBox {
   display: inline-block;
   float: right;
+  width: 70%;
 }
 
 .hostPin {
-  padding-top: 50%;
   font-size: 100px;
 }
