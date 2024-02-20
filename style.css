@@ -297,6 +297,7 @@ h1 {
   display: inline-block;
   float: right;
   width: 60%;
+  height: 90%;
   background-size: cover;
   background-image: url('src/title.jpg')
 }
