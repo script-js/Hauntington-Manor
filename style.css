@@ -287,6 +287,7 @@ h1 {
 .hostTitle img {
   width: 70px;
 }
+
 .hostTitle p {
   display: inline-block;
   color: black;
@@ -296,6 +297,8 @@ h1 {
   display: inline-block;
   float: right;
   width: 60%;
+  background-size: cover;
+  background-image: url('src/title.jpg')
 }
 
 .hostPin {
