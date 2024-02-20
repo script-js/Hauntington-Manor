@@ -406,7 +406,7 @@ function rungame() {
   popup()
   resetCPOS()
   getTransitions("foyer")
-  setInterval(count,300)
+  setInterval(count,500)
 }
 
 function count() {
