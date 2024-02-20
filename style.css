@@ -298,6 +298,7 @@ h1 {
   float: right;
   width: 60%;
   height: 90%;
+  text-align: center;
   background-size: cover;
   background-image: url('src/title.jpg')
 }
