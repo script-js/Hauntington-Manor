@@ -442,5 +442,5 @@ function splist() {
 }
 
 function sMap() {
-  popup("<img src='src/map.png' width='100%'>")
+  popup("<img src='src/map.png' width='80%'>")
 }
