@@ -449,5 +449,4 @@ function sMap() {
     setTimeout(function() {
       popupBox.innerHTML = "<img src='src/map.png' width='65%'><button class='popupCB' onclick='popup()'>Close</button>";
     },400)
-  }
 }
