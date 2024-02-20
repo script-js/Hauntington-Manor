@@ -281,7 +281,7 @@ h1 {
   font-size: 40px;
   background: white;
   color: black;
-  width: 30%;
+  width: fit-content;
 }
 
 .hostTitle img {
@@ -295,7 +295,7 @@ h1 {
 #hostBox {
   display: inline-block;
   float: right;
-  width: 70%;
+  width: 60%;
 }
 
 .hostPin {
