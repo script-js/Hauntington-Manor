@@ -205,6 +205,18 @@ h1 {
   display: inline-block;
 }
 
+
+.plB {
+  width: 30%;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.plB img {
+  border-radius: 50px;
+  width: 70%;
+}
+
 .guessB:hover {
   background: lightgray;
 }
