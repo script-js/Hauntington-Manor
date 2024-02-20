@@ -26,14 +26,12 @@ const firebaseConfig = {
 };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  setTimeout(function() {    
-  const db = getDatabase()
+  const app = initializeApp(firebaseConfig);  
   window.newid = Math.ceil(Math.random() * (20000000 - 10000000) + 10000000)
-      set(ref(db, 'gameid/' + newid), {
+      set(ref(getDatabase(), 'gameid/' + newid), {
         started: true
       });
-      get(child(dbRef, "gameid/" + newid)).then((snapshot) => {
+      get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
           if (snapshot.exists()) {
             var gdata = snapshot.val();
             if (gdata.stared == true) {
@@ -41,7 +39,6 @@ const firebaseConfig = {
             }
           }
       })
-  },100)
 </script>
   </body>
 </html>
