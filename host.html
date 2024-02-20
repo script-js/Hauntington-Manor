@@ -34,7 +34,7 @@ const firebaseConfig = {
       get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
           if (snapshot.exists()) {
             var gdata = snapshot.val();
-            if (gdata.stared == true) {
+            if (gdata.started == true) {
               alert()
             }
           }
