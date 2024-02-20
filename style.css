@@ -290,7 +290,8 @@ h1 {
 }
 .hostTitle p {
   padding: 30%;
-  display: inline;
+  display: inline-block;
+  color: black;
 }
 
 #hostBox {
