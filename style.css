@@ -277,8 +277,22 @@ h1 {
   font-size: 40px;
   background: white;
   color: black;
+  width: fit-content;
 }
 
 .hostTitle img {
-  width: 100px;
+  width: 70px;
+}
+.hostTitle p {
+  padding: 30%
+}
+
+#hostBox {
+  display: inline-block;
+  float: right;
+}
+
+.hostPin {
+  padding-top: 50%;
+  font-size: 100px;
 }
