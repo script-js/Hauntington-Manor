@@ -60,6 +60,9 @@ html,body {
   #imgTCont {
     height: 83%;
   }
+  #popupBox {
+    width: 500px;
+  }
 }
 
 h1 {
@@ -173,7 +176,6 @@ h1 {
   transition: ease 400ms;
   margin: auto;
   border-radius: 30px;
-  width: 500px;
 }
 
 .moi {
@@ -184,8 +186,8 @@ h1 {
 
 .invisiclue {
   position: absolute;
-  width: 15%;
-  height: 15%;
+  width: 10%;
+  height: 10%;
 }
 
 #imgTCont {
