@@ -27,6 +27,7 @@ const firebaseConfig = {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  setTimeout(function() {    
   const db = getDatabase()
   window.newid = Math.ceil(Math.random() * (20000000 - 10000000) + 10000000)
       set(ref(db, 'gameid/' + newid), {
@@ -40,6 +41,7 @@ const firebaseConfig = {
             }
           }
       })
+  },100)
 </script>
   </body>
 </html>
