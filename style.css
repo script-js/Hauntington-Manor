@@ -284,7 +284,8 @@ h1 {
   width: 70px;
 }
 .hostTitle p {
-  padding: 30%
+  padding: 30%;
+  display: inline
 }
 
 #hostBox {
