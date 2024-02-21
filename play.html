@@ -67,7 +67,6 @@ const firebaseConfig = {
                 al2 = gamedata.al2;
                 rooms = gamedata.rooms;
                 suspects = gamedata.suspects
-                rungame()
                 popup("<h1>Waiting for the game to start...</h1>",true)
               } else {
                 sessionStorage.setItem("multiplayer","")
@@ -100,6 +99,7 @@ const firebaseConfig = {
             get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
               if (snapshot.exists()) {
                 popup()
+                rungame()
                 clearInterval(scheckint)
               }
             })
