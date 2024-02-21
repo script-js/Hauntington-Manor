@@ -52,6 +52,12 @@ const firebaseConfig = {
   const db = getDatabase()
   const dbRef = ref(db)
 
+          function throwAction(content) {
+            set(ref(getDatabase(), 'gameid/' + newid + "/action"), {
+              content: content
+            });
+          } 
+          
           function mpSync() {
             get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
               if (snapshot.exists()) {
@@ -70,6 +76,30 @@ const firebaseConfig = {
               }
             })
           }
+          function throwGuess(guess) {
+            if (suspects[gperson].isMurderer == true) {
+              throwAction("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
+            } else {
+              throwAction("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
+            }
+          }
+
+          function getTime() {
+            get(child(dbRef, "gameid/" + mpcode + "/timeroff")).then((snapshot) => {
+              if (snapshot.exists()) {
+                popup("<h1>Times Up!</h1>",true)
+                setTimeout(function() {location.replace("message/loseMP")},2000)
+              }
+            })
+          }
+
+          function throwGuessProg(username) {
+            throwAction("<h1>" + username + "</h1><h2>is guessing...</h2>")
+          }
+
+          window.throwGuess = throwGuess
+          window.getTime = getTime
+          window.throwGuessProg = throwGuessProg
           window.mpSync = mpSync
 </script>
   </body>
