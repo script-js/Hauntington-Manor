@@ -97,7 +97,6 @@ const firebaseConfig = {
           }
 
           function startCheck() {
-              if (snapshot.exists()) {
             get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
               if (snapshot.exists()) {
                 popup()
@@ -105,7 +104,6 @@ const firebaseConfig = {
                 clearInterval(scheckint)
               }
             })
-              }
           }
 
           function actionCheck() {
