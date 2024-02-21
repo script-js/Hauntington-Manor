@@ -32,7 +32,7 @@
       popupBox.style.display = "none";
     },400)
   } else {
-  popupBack.style.display = "block";
+  popupBox.style.display = "block";
   setTimeout(function() {
     popupBox.style.height = "98%"
   },50)
@@ -180,7 +180,7 @@ Object.keys(suspects).forEach(function (k) {
       }
       function endGame() {
         set(ref(getDatabase(), 'gameid/' + newid), {});
-        
+        location.replace("/")
       }
 
       function count() {
@@ -196,6 +196,7 @@ Object.keys(suspects).forEach(function (k) {
   }
   if (trHour == 12) {
     set(ref(getDatabase(),'gameid/' + newid + '/timeroff'),{"done":true})
+    popup("<h1>Time's Up!</h1>")
     setTimeout(endGame,3000)
   } else {
     hostETA.innerHTML = trHour + ":" + minTXT
