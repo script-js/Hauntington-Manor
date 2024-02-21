@@ -54,6 +54,7 @@ const firebaseConfig = {
 
           function throwAction(content) {
             clearInterval(acint)
+            acint = setInterval(removeACheck,500)
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
               content: content
             });
@@ -61,6 +62,7 @@ const firebaseConfig = {
 
           function removeAction() {
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
+            clearInterval(acint)
             acint = setInterval(actionCheck,500)
           }
           
@@ -125,13 +127,20 @@ const firebaseConfig = {
 
               function endCheck() {
                 get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
-              if (snapshot.exists()) {
-                console.log()
-                } else {
+              if (!snapshot.exists()) {
                 location.replace("message/winMP")
               }
             })
               }
+
+          function removeACheck() {
+            get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
+              if (!snapshot.exists()) {
+                popup()
+              }})
+          }
+
+                                                                                window.removeACheck = removeACheck
           window.removeAction = removeAction
           window.actionCheck = actionCheck
           window.startCheck = startCheck
