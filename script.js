@@ -70,6 +70,7 @@ var trMin = 0;
 var trHour = 0;
 var setupint;
 var fbON = false;
+var scheckint;
 
 // More Assignments
 var mpcode = false;
@@ -116,6 +117,8 @@ function isetup() {
     clearInterval(setupint)
     mpcode = sessionStorage.getItem("multiplayer")
     mpSync()
+    popup("Waiting for the game to start...",true)
+    scheckint = startInterval(startCheck,500)
   }
 }
   if (!sessionStorage.getItem("multiplayer")) {
