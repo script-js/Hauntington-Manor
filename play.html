@@ -54,7 +54,6 @@ const firebaseConfig = {
 
           function throwAction(content) {
             clearInterval(acint)
-            acint = setInterval(removeACheck,500)
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
               content: content
             });
@@ -63,7 +62,6 @@ const firebaseConfig = {
           function removeAction() {
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
             clearInterval(acint)
-            acint = setInterval(actionCheck,500)
           }
           
           function mpSync() {
@@ -121,6 +119,8 @@ const firebaseConfig = {
           if (snapshot.exists()) {
             var data = snapshot.val()
             popup(data.content,true)
+            clearInterval(acint)
+            acint = setInterval(removeACheck,500)
           }
         })
             console.log("ac")
@@ -139,6 +139,8 @@ const firebaseConfig = {
             get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
               if (!snapshot.exists()) {
                 popup()
+                clearInterval(acint)
+                acint = setInterval(actionCheck,500)
               }})
           }
 
