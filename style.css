@@ -281,7 +281,7 @@ h1 {
   font-size: 40px;
   background: white;
   color: black;
-  width: 40%;
+  width: 30%;
   position: absolute;
   left: 0;
   top: 0;
@@ -304,7 +304,7 @@ h1 {
   position: absolute;
   right: 0;
   top: 0;
-  width: 60%;
+  width: 70%;
   height: 100%;
   text-align: center;
   background-size: cover;
