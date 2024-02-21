@@ -66,6 +66,7 @@ const firebaseConfig = {
                 get(child(dbRef, "gameid/" + mpcode + "/suspects")).then((snapshot) => {
                   suspects = snapshot.val()
                 })
+                popup()
               } else {
                 sessionStorage.setItem("multiplayer","")
                 popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>",true)
