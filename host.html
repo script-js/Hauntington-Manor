@@ -136,8 +136,10 @@ Object.keys(suspects).forEach(function (k) {
       
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);  
-  function createGame() {
+  function createGame(tester) {
+    if (!tester) {
   window.newid = Math.ceil(Math.random() * (20000000 - 10000000) + 10000000)
+    }
     get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
       if (snapshot.exists()) {createGame()} else {
       set(ref(getDatabase(), 'gameid/' + newid), {
