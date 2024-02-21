@@ -175,9 +175,9 @@ Object.keys(suspects).forEach(function (k) {
       })
       }})
       }
-      function endGame() {
+      function endGame(curl) {
         set(ref(getDatabase(), 'gameid/' + newid), {});
-        location.replace("/")
+        if (curl) {location.replace(curl)} else {location.replace("/")}
       }
 
       function count() {
@@ -204,7 +204,15 @@ Object.keys(suspects).forEach(function (k) {
         get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
           if (snapshot.exists()) {
             var data = snapshot.val()
-            popup(data.content)
+            var act = data.content
+            if (act.includes("CODE:") {
+              var actcode = act.replace("CODE:","")
+              if (actcode == "WIN") {
+                endGame("message/winHMP")
+              }
+            } else {
+              popup(act)
+            }
             clearInterval(acint)
             acint = setInterval(removeACheck,500)
           }
