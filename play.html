@@ -97,7 +97,6 @@ const firebaseConfig = {
           }
 
           function startCheck() {
-            get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
               if (snapshot.exists()) {
             get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
               if (snapshot.exists()) {
