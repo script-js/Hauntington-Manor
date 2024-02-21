@@ -163,7 +163,6 @@ Object.keys(suspects).forEach(function (k) {
       }
 
       function count() {
-  if (mpcode) {getTime()} else {
   trMin = trMin + 1
   if (trMin == 60) {
     trMin = 0
@@ -179,7 +178,6 @@ Object.keys(suspects).forEach(function (k) {
     setTimeout(endGame,3000)
   } else {
     hostETA.innerHTML = trHour + ":" + minTXT
-  }
   }
 }
       createGame()
