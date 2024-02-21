@@ -63,7 +63,7 @@ const firebaseConfig = {
 
           function removeAction() {
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
-            console("ra")
+            console.log("ra")
             clearInterval(acint)
             acint = setInterval(actionCheck,500)
           }
