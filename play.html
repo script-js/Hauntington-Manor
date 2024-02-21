@@ -53,10 +53,17 @@ const firebaseConfig = {
   const dbRef = ref(db)
 
           function throwAction(content) {
+            get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
+            if (snapshot.exists()) {
+              set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
+              setTimeout(function() {throwAction(content)},500)
+            } else {
             clearInterval(acint)
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
               content: content
             });
+            }
+            })
           } 
 
           function removeAction() {
