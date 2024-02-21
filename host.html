@@ -15,6 +15,7 @@
     <script>
       var trHour = 0;
       var trMin = 0;
+      var acint;
       
       function pinShow() {
         hostBox.innerHTML = "<h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
@@ -207,7 +208,17 @@ Object.keys(suspects).forEach(function (k) {
           }
         })
       }
-      setInterval(actionCheck,500)
+
+          function removeACheck() {
+            console.log("rac")
+            get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
+              if (!snapshot.exists()) {
+                popup()
+                clearInterval(acint)
+                acint = setInterval(actionCheck,500)
+              }})
+          }
+      acint = setInterval(actionCheck,500)
       
       createGame()
       window.endGame = endGame
