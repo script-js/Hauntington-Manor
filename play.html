@@ -58,6 +58,11 @@ const firebaseConfig = {
               content: content
             });
           } 
+
+          function removeAction() {
+            set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
+            acint = setInterval(actionCheck,500)
+          }
           
           function mpSync() {
             get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
@@ -127,6 +132,7 @@ const firebaseConfig = {
               }
             })
               }
+          window.removeAction = removeAction
           window.actionCheck = actionCheck
           window.startCheck = startCheck
           window.throwGuess = throwGuess
