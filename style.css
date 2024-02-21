@@ -312,7 +312,9 @@ h1 {
 }
 
 .hostPin {
-  position: absolute;
-  top: 30px;
-  font-size: 30px;
+  font-size: 40px;
+}
+
+#hostETA {
+  font-size: 100px;
 }
