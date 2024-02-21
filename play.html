@@ -53,7 +53,7 @@ const firebaseConfig = {
   const dbRef = ref(db)
 
           function throwAction(content) {
-            set(ref(getDatabase(), 'gameid/' + newid + "/action"), {
+            set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
               content: content
             });
           } 
