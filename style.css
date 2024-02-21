@@ -282,8 +282,10 @@ h1 {
   background: white;
   color: black;
   width: 40%;
-  padding-top: 40%;
-  padding-bottom: 40%;
+  height: 100%
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hostTitle img {
@@ -295,10 +297,11 @@ h1 {
 }
 
 #hostBox {
-  display: inline-block;
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 60%;
-  height: 90%;
+  height: 100%;
   text-align: center;
   background-size: cover;
   background-image: url('src/title.jpg')
