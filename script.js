@@ -387,9 +387,6 @@ function rChange(roomid) {
     }
     resetCPOS();
   },1000)
-  if (mpcode) {
-    mpRoom(mpuid,roomid)
-  }
 }
 
 function popup(text,noclose) {
