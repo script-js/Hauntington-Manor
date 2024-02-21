@@ -282,6 +282,9 @@ h1 {
   background: white;
   color: black;
   width: 40%;
+  position: absolute;
+  left: 0;
+  top: 0;
   height: 100%;
   display: flex;
   align-items: center;
