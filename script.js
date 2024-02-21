@@ -117,7 +117,7 @@ function isetup() {
     clearInterval(setupint)
     mpcode = sessionStorage.getItem("multiplayer")
     mpSync()
-    scheckint = startInterval(startCheck,500)
+    scheckint = setInterval(startCheck,500)
   }
 }
   if (!sessionStorage.getItem("multiplayer")) {
