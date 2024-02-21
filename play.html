@@ -68,6 +68,7 @@ const firebaseConfig = {
                 rooms = gamedata.rooms;
                 suspects = gamedata.suspects
                 popup("<h1>Waiting for the game to start...</h1>",true)
+                scheckint = setInterval(startCheck,500)
               } else {
                 sessionStorage.setItem("multiplayer","")
                 popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>",true)
