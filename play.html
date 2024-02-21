@@ -53,6 +53,7 @@ const firebaseConfig = {
   const dbRef = ref(db)
 
           function throwAction(content) {
+            clearInterval(acint)
             set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
               content: content
             });
@@ -125,9 +126,9 @@ const firebaseConfig = {
             })
               }
               
-      setInterval(actionCheck,500)
+      var acint = setInterval(actionCheck,500)
               setInterval(endCheck,500)
-          
+          window.actionCheck = actionCheck
           window.startCheck = startCheck
           window.throwGuess = throwGuess
           window.getTime = getTime
