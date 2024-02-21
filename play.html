@@ -101,10 +101,12 @@ const firebaseConfig = {
             get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
               if (snapshot.exists()) {
                 popup()
+                clearInterval(scheckint)
               }
             })
           }
-
+          
+          window.startCheck = startCheck
           window.throwGuess = throwGuess
           window.getTime = getTime
           window.throwGuessProg = throwGuessProg
