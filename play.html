@@ -110,6 +110,16 @@ const firebaseConfig = {
               }
             })
           }
+
+          function actionCheck() {
+        get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
+          if (snapshot.exists()) {
+            var data = snapshot.val()
+            popup(data.content)
+          }
+        })
+      }
+      setInterval(actionCheck,500)
           
           window.startCheck = startCheck
           window.throwGuess = throwGuess
