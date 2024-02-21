@@ -8,6 +8,7 @@
   </head>
   <style>* {user-select:auto}</style>
   <body style="background:black">
+    <div id="popupBox" style="display:none; position: absolute;   right: 0;   top: 0;   width: 60%;   height: 100%;"></div>
     <div class="hostTitle"><img src="src/icon.png"><p>Hauntington Manor</p></div>
     <div id="players"></div>
     <div id="hostBox"><h1 class='hostPin'>Loading Pin...</h1></div>
@@ -22,6 +23,22 @@
         hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><p>&nbsp;</p><h1 id='hostETA'>0:00</h1><button class='startB' style='animation:none' onclick='endGame()'>End Game</button>";
         setInterval(count,500)
       }
+
+      function popup(text) {
+  if (!text) {
+    popupBox.style.height = "2px"
+    popupBox.innerHTML = "";
+    setTimeout(function() {
+      popupBox.style.display = "none";
+    },400)
+  } else {
+  popupBack.style.display = "block";
+  setTimeout(function() {
+    popupBox.style.height = "98%"
+  },50)
+    setTimeout(function() {popupBox.innerHTML = "<p>&nbsp;</p>" + text},400)
+  }
+}
     </script>
     <script type="module">
   // Import the functions you need from the SDKs you need
@@ -163,6 +180,7 @@ Object.keys(suspects).forEach(function (k) {
       }
       function endGame() {
         set(ref(getDatabase(), 'gameid/' + newid), {});
+        
       }
 
       function count() {
