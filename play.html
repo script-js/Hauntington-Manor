@@ -48,6 +48,7 @@ const firebaseConfig = {
       
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);  
+  window.fbON = app
   const db = getDatabase()
   const dbRef = ref(db)
 
