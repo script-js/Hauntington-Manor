@@ -13,7 +13,11 @@
     <div id="hostBox"><h1 class='hostPin'>Loading Pin...</h1></div>
     <script>
       function pinShow() {
-        hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2>"
+        hostBox.innerHTML = "<h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
+      }
+      function startG() {
+        hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><p>&nbsp;</p><h1 id='hostETA'>0:00</h1><button class='startB' style='animation:none' onclick='endGame()'>End Game</button>";
+        setInterval(count,500)
       }
     </script>
     <script type="module">
@@ -154,7 +158,33 @@ Object.keys(suspects).forEach(function (k) {
       })
       }})
       }
+      function endGame() {
+        set(ref(getDatabase(), 'gameid/' + newid), {});
+      }
+
+      function count() {
+  if (mpcode) {getTime()} else {
+  trMin = trMin + 1
+  if (trMin == 60) {
+    trMin = 0
+    trHour = trHour + 1
+  }
+  if (trMin.toString().length == 1) {
+    var minTXT = "0" + trMin
+  } else {
+    var minTXT = trMin
+  }
+  if (trHour == 12) {
+    set(ref(getDatabase(),'gameid/' + newid + '/timeroff'),{"done":true})
+    setTimeout(endGame,3000)
+  } else {
+    hostETA.innerHTML = trHour + ":" + minTXT
+  }
+  }
+}
       createGame()
+      window.endGame = endGame
+      window.count = count
       window.createGame = createGame
 </script>
   </body>
