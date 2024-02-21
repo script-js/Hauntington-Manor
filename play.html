@@ -118,7 +118,7 @@ const firebaseConfig = {
         get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
           if (snapshot.exists()) {
             var data = snapshot.val()
-            popup(data.content)
+            popup(data.content,true)
           }
         })
       }
