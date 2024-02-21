@@ -19,10 +19,6 @@
       function pinShow() {
         hostBox.innerHTML = "<h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
       }
-      function startG() {
-        hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><p>&nbsp;</p><h1 id='hostETA'>0:00</h1><button class='startB' style='animation:none' onclick='endGame()'>End Game</button>";
-        setInterval(count,500)
-      }
 
       function popup(text) {
   if (!text) {
@@ -217,6 +213,12 @@ Object.keys(suspects).forEach(function (k) {
       window.endGame = endGame
       window.count = count
       window.createGame = createGame
+      function startG() {
+        hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><p>&nbsp;</p><h1 id='hostETA'>0:00</h1><button class='startB' style='animation:none' onclick='endGame()'>End Game</button>";
+        setInterval(count,500)
+        set(ref(getDatabase(), 'gameid/' + newid + "/started"), {"done":true});
+      }
+      window.startG = startG
 </script>
   </body>
 </html>
