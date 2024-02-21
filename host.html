@@ -12,6 +12,9 @@
     <div id="players"></div>
     <div id="hostBox"><h1 class='hostPin'>Loading Pin...</h1></div>
     <script>
+      var trHour = 0;
+      var trMin = 0;
+      
       function pinShow() {
         hostBox.innerHTML = "<h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
       }
