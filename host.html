@@ -205,6 +205,7 @@ Object.keys(suspects).forEach(function (k) {
           if (snapshot.exists()) {
             var data = snapshot.val()
             popup(data.content)
+            clearInterval(acint)
             acint = setInterval(removeACheck,500)
           }
         })
