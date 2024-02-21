@@ -312,5 +312,7 @@ h1 {
 }
 
 .hostPin {
-  font-size: 100px;
+  position: absolute;
+  top: 30px;
+  font-size: 30px;
 }
