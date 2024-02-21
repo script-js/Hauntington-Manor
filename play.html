@@ -27,6 +27,52 @@
       <br>
       <button class="arrow" ontouchstart="moveSS('d')" ontouchend="moveSS()">arrow_downward</button>
     </div>
+    <!-- Multiplayer Functions -->
+        <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCU_4SYzTVxlCcChVYBo5NIWxWRn6Q5ZPg",
+  authDomain: "hauntington-manor-mp.firebaseapp.com",
+  databaseURL: "https://hauntington-manor-mp-default-rtdb.firebaseio.com",
+  projectId: "hauntington-manor-mp",
+  storageBucket: "hauntington-manor-mp.appspot.com",
+  messagingSenderId: "87277618348",
+  appId: "1:87277618348:web:ce8dd4d75e18032bd64b09"
+};
+      
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);  
+  const db = getDatabase()
+  const dbRef = ref(db)
+
+          function mpSync() {
+            get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
+              if (snapshot.exists()) {
+                var gamedata = snapshot.val()
+                murderer = gamedata.murderer;
+                al1 = gamedata.al1;
+                console.log(gamedata)
+                al2 = gamedata.al2;
+                get(child(dbRef, "gameid/" + mpcode + "/rooms")).then((snapshot) => {
+                  rooms = snapshot.val()
+                })
+                get(child(dbRef, "gameid/" + mpcode + "/suspects")).then((snapshot) => {
+                  suspects = snapshot.val()
+                })
+              } else {
+                sessionStorage.setItem("multiplayer","")
+                popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>",true)
+              }
+            })
+          }
+          window.mpSync = mpSync
+</script>
   </body>
   <script src="script.js"></script>
 </html>
