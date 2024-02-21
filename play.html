@@ -58,15 +58,11 @@ const firebaseConfig = {
                 var gamedata = snapshot.val()
                 murderer = gamedata.murderer;
                 al1 = gamedata.al1;
-                console.log(gamedata)
                 al2 = gamedata.al2;
-                get(child(dbRef, "gameid/" + mpcode + "/rooms")).then((snapshot) => {
-                  rooms = snapshot.val()
-                })
-                get(child(dbRef, "gameid/" + mpcode + "/suspects")).then((snapshot) => {
-                  suspects = snapshot.val()
-                })
+                rooms = gamedata.rooms;
+                suspects = gamedata.suspects
                 popup()
+                console.log(gamedata)
               } else {
                 sessionStorage.setItem("multiplayer","")
                 popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>",true)
