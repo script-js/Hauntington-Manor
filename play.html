@@ -97,6 +97,14 @@ const firebaseConfig = {
             throwAction("<h1>" + username + "</h1><h2>is guessing...</h2>")
           }
 
+          function startCheck() {
+            get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
+              if (snapshot.exists()) {
+                popup()
+              }
+            })
+          }
+
           window.throwGuess = throwGuess
           window.getTime = getTime
           window.throwGuessProg = throwGuessProg
