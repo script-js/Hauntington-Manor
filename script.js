@@ -117,7 +117,6 @@ function isetup() {
     clearInterval(setupint)
     mpcode = sessionStorage.getItem("multiplayer")
     mpSync()
-    popup("Waiting for the game to start...",true)
     scheckint = startInterval(startCheck,500)
   }
 }
@@ -131,7 +130,7 @@ function isetup() {
     }
   } else {
     etabox.style.display = "none";
-    popup("<h1>Connecting to game...</h1>")
+    popup("<h1>Connecting to game...</h1>",true)
     setupint = setInterval(isetup,500)
   }
 
