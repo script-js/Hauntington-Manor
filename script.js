@@ -127,6 +127,7 @@ function isetup() {
       location.replace("tutorial")
     }
   } else {
+    etabox.style.display = "none";
     popup("<h1>Connecting to game...</h1>")
     setupint = setInterval(isetup,500)
   }
