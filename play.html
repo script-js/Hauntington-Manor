@@ -103,23 +103,33 @@ const firebaseConfig = {
               if (snapshot.exists()) {
                 popup()
                 rungame()
+                clearInterval(scheckint)
               }
             })
-              } else {
-                location.replace("message/winMP")
-              }
-            })
+              
           }
 
           function actionCheck() {
-        get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
+        get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
           if (snapshot.exists()) {
             var data = snapshot.val()
             popup(data.content)
           }
         })
       }
+
+              function endCheck() {
+                get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
+              if (snapshot.exists()) {
+                console.log()
+                } else {
+                location.replace("message/winMP")
+              }
+            })
+              }
+              
       setInterval(actionCheck,500)
+              setInterval(endCheck,500)
           
           window.startCheck = startCheck
           window.throwGuess = throwGuess
