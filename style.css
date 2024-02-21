@@ -281,15 +281,16 @@ h1 {
   font-size: 40px;
   background: white;
   color: black;
-  width: fit-content;
+  width: 40%;
+  padding-top: 40%;
+  padding-bottom: 40%;
 }
 
 .hostTitle img {
-  width: 70px;
+  width: 50%;
 }
 
 .hostTitle p {
-  display: inline-block;
   color: black;
 }
 
