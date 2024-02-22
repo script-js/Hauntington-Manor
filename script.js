@@ -118,6 +118,7 @@ function isetup() {
     clearInterval(setupint)
     mpcode = sessionStorage.getItem("multiplayer")
     mpSync()
+    addUserToList()
   }
 }
   if (!sessionStorage.getItem("multiplayer")) {
