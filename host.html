@@ -8,7 +8,7 @@
   </head>
   <style>* {user-select:auto}</style>
   <body style="background:black">
-    <div class="hostTitle"><img src="src/icon.png"><p>Hauntington Manor</p></div>
+    <div class="hostTitle"><img src="src/icon.png"><p>Hauntington Manor</p><div id="playerBox"></div></div>
     <div id="players"></div>
     <div id="hostBox"><h1 class='hostPin'>Loading Pin...</h1></div>
     <div id="popupBox" style="display:none; position: absolute;   right: 0;   top: 0;   width: 60%;   height: 100%;"></div>
@@ -228,6 +228,19 @@ Object.keys(suspects).forEach(function (k) {
                 acint = setInterval(actionCheck,500)
               }})
           }
+
+          function playerCheck() {
+            get(child(ref(getDatabase()), "gameid/" + newid + "/players")).then((snapshot) => {
+              if (snapshot.exists()) {
+                var gdata = snapshot.val();
+                var toadd = "";
+                Object.keys(gdata).forEach(function (k) {
+                  toadd = toadd + "<div class='hostPlayer'>" + k + "</div>"
+                }
+                playerBox.innerHTML = toadd
+              }})
+          } 
+      setInterval(playerCheck,1000)
       acint = setInterval(actionCheck,500)
       
       createGame()
