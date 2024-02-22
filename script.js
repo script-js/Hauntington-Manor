@@ -3,7 +3,7 @@
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
 var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
 var weapon = "knife"
-var mpuid = "TESTER" + Math.random()
+var mpuid = "Player" + Math.ceil(Math.floor(Math.random() * 1000))
 
 // Rooms
 
@@ -117,6 +117,7 @@ function isetup() {
   if (fbON) {
     clearInterval(setupint)
     mpcode = sessionStorage.getItem("multiplayer")
+    mpuid = localStorage.getItem("mpname")
     mpSync()
     addUserToList()
   }
