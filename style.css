@@ -318,3 +318,8 @@ h1 {
 #hostETA {
   font-size: 100px;
 }
+
+.hostPlayer {
+  border-top: 1px solid gray;
+  font-size: 30px;
+}
