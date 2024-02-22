@@ -236,9 +236,10 @@ Object.keys(suspects).forEach(function (k) {
                 var toadd = "";
                 Object.keys(gdata).forEach(function (k) {
                   toadd = toadd + "<div class='hostPlayer'>" + k + "</div>"
-                }
+                })
                 playerBox.innerHTML = toadd
-              }})
+              }
+            })
           } 
       setInterval(playerCheck,1000)
       acint = setInterval(actionCheck,500)
