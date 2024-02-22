@@ -155,7 +155,7 @@ const firebaseConfig = {
 
           function addUserToList() {
             var toadd = {}
-            toadd["/gameid/" + mpcode + "/players/" + mpuid] = mpuid;
+            toadd["/gameid/" + mpcode + "/players/" + btoa(mpuid)] = mpuid;
             update(dbRef,toadd)
           }
           
