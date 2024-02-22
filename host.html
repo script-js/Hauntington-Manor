@@ -235,7 +235,7 @@ Object.keys(suspects).forEach(function (k) {
                 var gdata = snapshot.val();
                 var toadd = "";
                 Object.keys(gdata).forEach(function (k) {
-                  toadd = toadd + "<div class='hostPlayer'>" + k + "</div>"
+                  toadd = toadd + "<div class='hostPlayer'>" + gdata[k] + "</div>"
                 })
                 playerBox.innerHTML = toadd
               }
