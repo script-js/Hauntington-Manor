@@ -314,11 +314,6 @@ h1 {
 
 #hostETA {
   font-size: 100px;
-  border-radius: 50px;
-  background: #525252;
-  border: 3px solid #12161b;
-  outline: 3px solid #1f3d3b;
-  padding: 30px;
 }
 
 .hostPlayer {
