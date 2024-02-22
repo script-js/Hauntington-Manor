@@ -93,7 +93,7 @@ const firebaseConfig = {
           function throwGuess(gperson) {
             if (suspects[gperson].isMurderer == true) {
               throwAction("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
-              setTimeout(function() {throwAction('CODE:WIN');alert()},5500)
+              setTimeout(function() {throwAction('CODE:WIN')},5500)
             } else {
               throwAction("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
               setTimeout(removeAction,5500)
@@ -154,6 +154,7 @@ const firebaseConfig = {
           }
 
                                                                                 window.removeACheck = removeACheck
+          window.throwAction = throwAction
           window.removeAction = removeAction
           window.actionCheck = actionCheck
           window.startCheck = startCheck
