@@ -53,6 +53,10 @@ html,body {
   .hostTitle {
     display:none;
   }
+  #hostBox {
+    width: 100%;
+    left: 0;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -70,6 +74,10 @@ html,body {
   }
   #popupBox {
     width: 500px;
+  }
+  #hostBox {
+    width: 70%;
+    right: 0;
   }
 }
 
@@ -302,9 +310,7 @@ h1 {
 
 #hostBox {
   position: absolute;
-  right: 0;
   top: 0;
-  width: 70%;
   height: 100%;
   text-align: center;
   background-size: cover;
