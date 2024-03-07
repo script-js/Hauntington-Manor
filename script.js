@@ -134,6 +134,7 @@ function isetup() {
     etabox.style.display = "none";
     popup("<h1>Connecting to game...</h1>",true)
     setupint = setInterval(isetup,500)
+    bmusic.pause();
   }
 
 // Functions/Event Listeners
