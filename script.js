@@ -120,6 +120,7 @@ function isetup() {
     mpuid = localStorage.getItem("mpname")
     mpSync()
     addUserToList()
+    document.title = "Hauntington Manor - Multiplayer"
   }
 }
   if (!sessionStorage.getItem("multiplayer")) {
@@ -133,6 +134,7 @@ function isetup() {
   } else {
     etabox.style.display = "none";
     popup("<h1>Connecting to game...</h1>",true)
+    document.title = "Hauntington Manor"
     setupint = setInterval(isetup,500)
     bmusic.pause();
   }
