@@ -98,7 +98,13 @@ const firebaseConfig = {
               setTimeout("throwAction('CODE:WIN')",5000)
             } else {
               throwAction("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
-              setTimeout(removeAction,5500)
+              setTimeout(function() {
+                removeAction()
+                var toadd = {}
+            toadd["/gameid/" + mpcode + "/players/" + btoa(mpuid)] = mpuid + "<br><span style='color:red'>Eliminated</span>";
+            update(dbRef,toadd)
+              },5500)
+              
             }
           }
 
