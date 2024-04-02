@@ -21,13 +21,13 @@
     <div class="controls"><button onclick="splist()" class="uibtn">groups</button><button class="uibtn" onclick="popup(cluebox)">search</button><div id="etabox">0:00</div><button class="uibtn" onclick="cShow()">check_circle</button><button onclick="sMap()" class="uibtn">map</button></div>
     <div id="imgTCont"><img src="src/room.png" id="rimg"/><img src="src/char.png" id="char"></div>
     <div class="arrowContainer">
-      <button class="arrow" ontouchstart="moveSS('u')" ontouchend="moveSS()">arrow_upward</button>
+      <button class="arrow" ontouchstart="moveSS('u')" ontouchend="moveSS()" onmousedown="moveSS('u')" onmouseup="moveSS()">arrow_upward</button>
       <br>
-      <button class="arrow" ontouchstart="moveSS('l')" ontouchend="moveSS()">arrow_back</button>
+      <button class="arrow" ontouchstart="moveSS('l')" ontouchend="moveSS()" onmousedown="moveSS('l')" onmouseup="moveSS()">arrow_back</button>
       <div style="width:80px;display:inline-block"></div>
-      <button class="arrow" ontouchstart="moveSS('r')" ontouchend="moveSS()">arrow_forward</button>
+      <button class="arrow" ontouchstart="moveSS('r')" ontouchend="moveSS()" onmousedown="moveSS('r')" onmouseup="moveSS()">arrow_forward</button>
       <br>
-      <button class="arrow" ontouchstart="moveSS('d')" ontouchend="moveSS()">arrow_downward</button>
+      <button class="arrow" ontouchstart="moveSS('d')" ontouchend="moveSS()" onmousedown="moveSS('d')" onmouseup="moveSS()">arrow_downward</button>
     </div>
     <!-- Multiplayer Functions -->
         <script type="module">
