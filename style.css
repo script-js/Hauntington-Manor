@@ -38,9 +38,6 @@ html,body {
   #popupBox {
     width: 100%;   
   }
-  .arrowContainer {
-    display: block;
-  }
   .startB {
     width: 85%;
   }
@@ -60,9 +57,6 @@ html,body {
 }
 
 @media only screen and (min-width: 600px) {
-  .arrowContainer {
-    display: none;
-  }
   .startB {
     width: 500px;
   }
