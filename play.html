@@ -82,7 +82,7 @@ const firebaseConfig = {
                 al2 = gamedata.al2;
                 rooms = gamedata.rooms;
                 suspects = gamedata.suspects
-                checkName(mpname,function() {
+                checkName(localStorage.getItem("mpname"),function() {
                 popup("<h1>Waiting for the game to start...</h1>",true)
                 scheckint = setInterval(startCheck,500)
                 acint = setInterval(actionCheck,500)
