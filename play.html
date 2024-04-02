@@ -181,7 +181,7 @@ const firebaseConfig = {
           window.throwGuessProg = throwGuessProg
           window.mpSync = mpSync
           function checkName(name,func) {
-            get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
+            get(child(ref(getDatabase()), "gameid/" + mpcode + "/players/" + btoa(name))).then((snapshot) => {
               if (snapshot.exists()) {
                 alert("Username already exists.")
                 location.replace("join")
