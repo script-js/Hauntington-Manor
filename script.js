@@ -119,7 +119,6 @@ function isetup() {
     mpcode = sessionStorage.getItem("multiplayer")
     mpuid = localStorage.getItem("mpname")
     mpSync()
-    addUserToList()
     document.title = "Hauntington Manor - Multiplayer"
   }
 }
