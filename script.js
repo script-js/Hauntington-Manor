@@ -201,13 +201,13 @@ function moveSS(direction) {
 }
 
 window.addEventListener("keydown", (event) => {
-  if (event.key == "ArrowUp") {
+  if (event.key == "ArrowUp" || event.key == "w") {
     moveSS("u")
-  } else if (event.key == "ArrowDown") {
+  } else if (event.key == "ArrowDown" || event.key == "s") {
     moveSS("d")
-  } else if (event.key == "ArrowRight") {
+  } else if (event.key == "ArrowRight" || event.key == "d") {
     moveSS("r")
-  } else if (event.key == "ArrowLeft") {
+  } else if (event.key == "ArrowLeft" || event.key == "a") {
     moveSS("l")
   }
 });
