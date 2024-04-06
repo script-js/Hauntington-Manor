@@ -119,7 +119,9 @@ function isetup() {
   if (fbON) {
     clearInterval(setupint)
     mpcode = sessionStorage.getItem("multiplayer")
-    mpuid = localStorage.getItem("mpname")
+    if (localStorage.getItem("mpname")) {
+      mpuid = localStorage.getItem("mpname")
+    }
     mpSync()
     document.title = "Hauntington Manor - Multiplayer"
   }
