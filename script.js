@@ -5,6 +5,7 @@ var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
 var weapon = "knife"
 var speed = 1;
 var mpuid = "Player" + Math.ceil(Math.floor(Math.random() * 1000))
+var mpID = btoa(Math.random())
 
 // Rooms
 
