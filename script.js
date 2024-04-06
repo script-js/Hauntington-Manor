@@ -3,6 +3,7 @@
 var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
 var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
 var weapon = "knife"
+var speed = 1;
 var mpuid = "Player" + Math.ceil(Math.floor(Math.random() * 1000))
 
 // Rooms
@@ -172,19 +173,19 @@ function move(direction) {
   var irect = rimg.getBoundingClientRect()
   if (direction == "l") {
     if (char.getBoundingClientRect().left > irect.left) {
-      char.style.left = (parseInt(char.style.left) - 1) + "px";
+      char.style.left = (parseInt(char.style.left) - speed) + "px";
     }
   } else if (direction == "u") {
     if (char.getBoundingClientRect().top > irect.top) {
-      char.style.top = (parseInt(char.style.top) - 1) + "px";
+      char.style.top = (parseInt(char.style.top) - speed) + "px";
     }
   } else if (direction == "r") {
     if (irect.right > char.getBoundingClientRect().right) {
-      char.style.left = (parseInt(char.style.left) + 1) + "px";
+      char.style.left = (parseInt(char.style.left) + speed) + "px";
     }
   } else if (direction == "d") {
     if (irect.bottom > char.getBoundingClientRect().bottom) {
-      char.style.top = (parseInt(char.style.top) + 1) + "px";
+      char.style.top = (parseInt(char.style.top) + speed) + "px";
     }
   }
 }
