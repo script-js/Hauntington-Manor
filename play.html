@@ -82,7 +82,11 @@ const firebaseConfig = {
                 al2 = gamedata.al2;
                 rooms = gamedata.rooms;
                 suspects = gamedata.suspects
-                checkName(localStorage.getItem("mpname"))
+                popup("<h1>Waiting for the game to start...</h1>",true)
+                scheckint = setInterval(startCheck,500)
+                acint = setInterval(actionCheck,500)
+                setInterval(endCheck,500)
+                addUserToList()
               } else {
                 sessionStorage.setItem("multiplayer","")
                 popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>",true)
@@ -98,7 +102,7 @@ const firebaseConfig = {
               setTimeout(function() {
                 removeAction()
                 var toadd = {}
-            toadd["/gameid/" + mpcode + "/players/" + btoa(mpuid)] = mpuid + "<br><span style='color:red'>Eliminated</span>";
+            toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid + "<br><span style='color:red'>Eliminated</span>";
             update(dbRef,toadd)
               },5500)
               
@@ -160,7 +164,7 @@ const firebaseConfig = {
 
           function addUserToList() {
             var toadd = {}
-            toadd["/gameid/" + mpcode + "/players/" + btoa(mpuid)] = mpuid;
+            toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid;
             update(dbRef,toadd)
           }
           
@@ -175,20 +179,6 @@ const firebaseConfig = {
           window.getTime = getTime
           window.throwGuessProg = throwGuessProg
           window.mpSync = mpSync
-          function checkName(name,func) {
-            get(child(ref(getDatabase()), "gameid/" + mpcode + "/players/" + btoa(name))).then((snapshot) => {
-              if (snapshot.exists()) {
-                alert("Username already exists.")
-                location.replace("join")
-              } else {
-                popup("<h1>Waiting for the game to start...</h1>",true)
-                scheckint = setInterval(startCheck,500)
-                acint = setInterval(actionCheck,500)
-                setInterval(endCheck,500)
-                addUserToList()
-              }
-            })
-          }
 </script>
   </body>
   <audio loop autoplay id="bmusic">
