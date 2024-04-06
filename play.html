@@ -19,8 +19,10 @@
   <body>
     <div class="modal" id="popupBack"><div id="popupBox"></div></div>
     <div class="controls"><button onclick="splist()" class="uibtn">groups</button><button class="uibtn" onclick="popup(cluebox)">search</button><div id="etabox">0:00</div><button class="uibtn" onclick="cShow()">check_circle</button><button onclick="sMap()" class="uibtn">map</button></div>
-    <div id="imgTCont"><img src="src/room.png" id="rimg"/><img src="src/char.png" id="char"></div><input type="range" min="1" max="5" value="1" onchange="speed = parseInt(this.value)">
+    <div id="imgTCont"><img src="src/room.png" id="rimg"/><img src="src/char.png" id="char"></div>
     <div class="arrowContainer">
+      Character Speed:
+      <br><input type="range" min="1" max="5" value="1" onchange="speed = parseInt(this.value)"><br>
       <button class="arrow" ontouchstart="moveSS('u')" ontouchend="moveSS()" onmousedown="moveSS('u')" onmouseup="moveSS()">arrow_upward</button>
       <br>
       <button class="arrow" ontouchstart="moveSS('l')" ontouchend="moveSS()" onmousedown="moveSS('l')" onmouseup="moveSS()">arrow_back</button>
