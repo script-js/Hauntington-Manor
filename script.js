@@ -81,7 +81,6 @@ var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
 var al1 = charPicker[(Math.floor(Math.random() * charPicker.length))]
 var al2 = charPicker[(Math.floor(Math.random() * charPicker.length))]
 suspects[murderer].isMurderer = true;
-suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom());
 suspects[al1].alliance = true;
 suspects[al2].alliance = true;
 var responsesNM = ["When I walked past where the " + weapon + " usually was, I noticed it wasn't there.","I saw " + suspects[murderer].desc + " going into the " + getReadableRoom(mroom),al1 + " and " + al2 + " have been acting weird"]
@@ -116,6 +115,7 @@ Object.keys(suspects).forEach(function (k) {
   suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
   suspects[k].clueATTR[0] = getRR()
 })
+suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom());
 function isetup() {
   if (fbON) {
     clearInterval(setupint)
