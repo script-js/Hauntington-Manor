@@ -110,12 +110,28 @@ function getRandRoom() {
   }
 }
 
+function getRandRoom2() {
+  var cnum = (Math.floor(Math.random() * roomPicker.length))
+  var chosenRD = roomPicker[cnum]
+  var exists = false
+  Object.keys(suspects).forEach(function (k) {
+    if (chosenRD == mroom || suspects[murderer].clueATTR[2] == chosenRD) {
+      exists = true;
+    }
+  })
+  if (exists) {
+    return getRandRoom()
+  } else {
+    return chosenRD
+  }
+}
+                                 
 Object.keys(suspects).forEach(function (k) {
   suspects[k].clueATTR[2] = getRandRoom()
   suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
   suspects[k].clueATTR[0] = getRR()
 })
-suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom());
+suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom2());
 function isetup() {
   if (fbON) {
     clearInterval(setupint)
