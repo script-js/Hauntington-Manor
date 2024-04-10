@@ -256,6 +256,9 @@ Object.keys(suspects).forEach(function (k) {
         set(ref(getDatabase(), 'gameid/' + newid + "/started"), {"done":true});
       }
       window.startG = startG
+      window.onbeforeunload = function(){
+        set(ref(getDatabase(), 'gameid/' + newid), {});
+      }
 </script>
      <audio loop autoplay id="bmusic">
        <source src="src/back.mp3" type="audio/mpeg">
