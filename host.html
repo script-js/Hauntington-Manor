@@ -257,6 +257,7 @@ Object.keys(suspects).forEach(function (k) {
       }
       window.startG = startG
       window.onbeforeunload = function(){
+        return "Are you sure you want to abandon your game?";
         set(ref(getDatabase(), 'gameid/' + newid), {});
       }
 </script>
