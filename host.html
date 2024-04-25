@@ -196,7 +196,8 @@ suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " goi
       }
       function endGame(curl) {
         set(ref(getDatabase(), 'gameid/' + newid), {});
-        if (curl) {location.replace(curl)} else {location.replace("/")}
+        sessionStorage.setItem("murderer",murderer)
+        if (curl) {location.replace(curl)} else {location.replace("/message/loseMPHost.html")}
       }
 
       function count() {
@@ -227,7 +228,7 @@ suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " goi
             if (act.includes("CODE:")) {
               var actcode = act.replace("CODE:","")
               if (actcode == "WIN") {
-                endGame("message/winMP")
+                endGame("message/winMP.html")
               }
             } else {
               popup(act)
