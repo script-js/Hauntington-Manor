@@ -116,7 +116,7 @@ const firebaseConfig = {
             get(child(dbRef, "gameid/" + mpcode + "/timeroff")).then((snapshot) => {
               if (snapshot.exists()) {
                 popup("<h1>Times Up!</h1>",true)
-                setTimeout(function() {location.replace("message/loseMP")},2000)
+                setTimeout(function() {location.replace("message/loseMP.html")},2000)
               }
             })
           }
@@ -150,7 +150,7 @@ const firebaseConfig = {
               function endCheck() {
                 get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
               if (!snapshot.exists()) {
-                location.replace("message/winMP")
+                location.replace("message/winMP.html")
               }
             })
               }
