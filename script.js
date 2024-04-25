@@ -149,7 +149,7 @@ function isetup() {
       setTimeout(rungame,3000)
     } else {
       localStorage.setItem("tutorial","done")
-      location.replace("tutorial")
+      location.replace("tutorial.html")
     }
   } else {
     etabox.style.display = "none";
@@ -172,16 +172,16 @@ function guess(elem1) {
   if (suspects[gperson].isMurderer == true) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>",true)
     if (mpcode) {
-      setTimeout(function() {location.replace("message/winMP")},6000)
+      setTimeout(function() {location.replace("message/winMP.html")},6000)
     } else {
-      setTimeout(function() {location.replace("message/winSP")},6000)
+      setTimeout(function() {location.replace("message/winSP.html")},6000)
     }
   } else {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>",true)
     if (mpcode) {
-      setTimeout(function() {location.replace("message/loseMP")},6000)
+      setTimeout(function() {location.replace("message/loseMP.html")},6000)
     } else {
-      setTimeout(function() {location.replace("message/loseSP")},6000)
+      setTimeout(function() {location.replace("message/loseSP.html")},6000)
     }
   }
   if (mpcode) {
@@ -494,7 +494,7 @@ function count() {
   if (trHour == 12) {
     popup("<h1>Times Up!</h1>",true)
     sessionStorage.setItem("murderer",murderer)
-    setTimeout(function() {location.replace("message/loseSP")},2000)
+    setTimeout(function() {location.replace("message/loseSP.html")},2000)
   } else {
     etabox.innerHTML = trHour + ":" + minTXT
   }
@@ -514,6 +514,3 @@ function sMap() {
       popupBox.innerHTML = "<img src='src/map.png' width='80%'><br><button class='popupCB' onclick='popup()'>Close</button>";
     },400)
 }
-
-// Multiplayer Monitoring: guess,rChange,cShow
-// Create Functions: throwGuess,mpSync,throwGuessProg,mpRoom,getTime
