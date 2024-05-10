@@ -128,10 +128,9 @@ function getRandRoom2() {
                                  
 Object.keys(suspects).forEach(function (k) {
   suspects[k].clueATTR[2] = getRandRoom()
-  suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
+  suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom2());
   suspects[k].clueATTR[0] = getRR()
 })
-suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom2());
 function isetup() {
   if (fbON) {
     clearInterval(setupint)
