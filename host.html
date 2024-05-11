@@ -21,7 +21,7 @@
       var acint;
       
       function pinShow() {
-        hostBox.innerHTML = "<h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
+        hostBox.innerHTML = "<img style='margin:auto' src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hauntington-manor.pages.dev/join?id=" + newid + "'><h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
       }
 
       function popup(text) {
