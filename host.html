@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="src/icon.png">
-    <title>Hauntington Manor - Multiplayer</title>
+    <title>Hauntington Manor - Host Game</title>
+    <script src="assign.js"></script>
     <script src='https://exactalytics.pages.dev/import.js'></script>
 <script>analyticsInit('Hauntington Manor','3moxYInXFN6fp')</script>
   </head>
@@ -55,125 +56,7 @@ const firebaseConfig = {
   storageBucket: "hauntington-manor-mp.appspot.com",
   messagingSenderId: "87277618348",
   appId: "1:87277618348:web:ce8dd4d75e18032bd64b09"
-};
-
-// Assignments
-
-var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
-var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
-var weapon = "knife"
-
-// Rooms
-
-var rooms = {
-  "bed": "point",
-  "living": "point",
-  "bed2": "point",
-  "lounge": "point",
-  "baseM": "point",
-  "attic": "point",
-  "kitchen": "point"
-}
-var mroom = roomPicker[(Math.floor(Math.random() * roomPicker.length))];
-rooms[mroom] = true
-function getReadableRoom(roomid) {
-  if (roomid == "bed") {
-    return "Bedroom"
-  } else if (roomid == "living") {
-    return "Living Room"
-  } else if (roomid == "bed2") {
-    return "Second Bedroom"
-  } else if (roomid == "lounge") {
-    return "Lounge"
-  } else if (roomid == "baseM") {
-    return "Basement"
-  } else if (roomid == "attic") {
-    return "Attic"
-  } else if (roomid == "kitchen") {
-    return "Kitchen"
-  } else {
-    return roomid
-  }
-}
-
-// Suspects
-// Clue Format: [message(0),ifmurderer(1),room(2)]
-
-var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a curly-haired old lady","alliance":false},
-  "Anita": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a timid-looking woman wearing a white dress","alliance":false},
-  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a man with a brown suit and brown hair","alliance":false},
-  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a skinny-looking young man","alliance":false},
-  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"an angry-looking woman with frizzy brown hair","alliance":false},
-  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"an old man with a blue shirt","alliance":false}
-}
-
-function getRandomNM() {
-  var r1r = charPicker[(Math.floor(Math.random() * charPicker.length))];
-  if (suspects[r1r].alliance == false && suspects[r1r].isMurderer == false) {
-    return r1r
-  } else {
-    return getRandomNM()
-  }
-}
-
-// More Assignments
-var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
-var al1 = charPicker[(Math.floor(Math.random() * charPicker.length))]
-var al2 = charPicker[(Math.floor(Math.random() * charPicker.length))]
-suspects[murderer].isMurderer = true;
-suspects[al1].alliance = true;
-suspects[al2].alliance = true;
-var responsesNM = ["When I walked past where the " + weapon + " usually was, I noticed it wasn't there.","I saw " + suspects[murderer].desc + " going into the " + getReadableRoom(mroom),al1 + " and " + al2 + " have been acting weird"]
-function getRR() {
-  var cnum = (Math.floor(Math.random() * responsesNM.length))
-  var chosenR = responsesNM[cnum]
-  if (chosenR) {
-    return chosenR;
-    responsesNM[cnum] = false
-  } else {
-    return getRR()
-  }
-}
-function getRandRoom() {
-  var cnum = (Math.floor(Math.random() * roomPicker.length))
-  var chosenRD = roomPicker[cnum]
-  var exists = false
-  Object.keys(suspects).forEach(function (k) {
-    if (chosenRD == suspects[k].clueATTR[2] || chosenRD == mroom) {
-      exists = true;
-    }
-  })
-  if (exists) {
-    return getRandRoom()
-  } else {
-    return chosenRD
-  }
-}
-
-function getRandRoom2() {
-  var cnum = (Math.floor(Math.random() * roomPicker.length))
-  var chosenRD = roomPicker[cnum]
-  var exists = false
-  Object.keys(suspects).forEach(function (k) {
-    if (chosenRD == mroom || suspects[murderer].clueATTR[2] == chosenRD) {
-      exists = true;
-    }
-  })
-  if (exists) {
-    return getRandRoom()
-  } else {
-    return chosenRD
-  }
-}
-      
-Object.keys(suspects).forEach(function (k) {
-  suspects[k].clueATTR[2] = getRandRoom()
-  suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
-  suspects[k].clueATTR[0] = getRR()
-})
-suspects[murderer].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom2());
-      
+};   
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);  
   function createGame() {
