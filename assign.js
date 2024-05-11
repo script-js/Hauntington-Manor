@@ -60,8 +60,8 @@ function getRandomNM() {
 
 // More Assignments
 var murderer = charPicker[(Math.floor(Math.random() * charPicker.length))]
-var al1 = charPicker[(Math.floor(Math.random() * charPicker.length))]
-var al2 = charPicker[(Math.floor(Math.random() * charPicker.length))]
+var al1 = getRandomNM()
+var al2 = getRandomNM()
 suspects[murderer].isMurderer = true;
 suspects[al1].alliance = true;
 suspects[al2].alliance = true;
