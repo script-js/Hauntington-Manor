@@ -86,13 +86,11 @@ function getRandRoom2() {
   var cnum = (Math.floor(Math.random() * roomPicker.length))
   var chosenRD = roomPicker[cnum]
   var exists = false
-  Object.keys(suspects).forEach(function (k) {
-    if (chosenRD == mroom || suspects[murderer].clueATTR[2] == chosenRD) {
-      exists = true;
-    }
-  })
+  if (chosenRD == mroom || suspects[murderer].clueATTR[2] == chosenRD) {
+    exists = true;
+  }
   if (exists) {
-    return getRandRoom()
+    return getRandRoom2()
   } else {
     return chosenRD
   }
