@@ -17,6 +17,7 @@ var setupint;
 var fbON = false;
 var scheckint;
 var acint;
+var currentRoomName = "foyer";
 
 // More Assignments
 var mpcode = false;
@@ -32,6 +33,7 @@ function isetup() {
     document.title = "Hauntington Manor - Multiplayer"
   }
 }
+
 if (!sessionStorage.getItem("multiplayer")) {
   if (localStorage.getItem("tutorial")) {
     popup("<h1>Get Ready!</h1>", true)
@@ -302,6 +304,7 @@ function rChange(roomid) {
       rimg.src = "src/room/" + roomid + ".png";
     }
     resetCPOS();
+    currentRoomName = roomid;
   }, 1000)
 }
 

@@ -107,13 +107,36 @@
           scheckint = setInterval(startCheck, 500)
           acint = setInterval(actionCheck, 500)
           setInterval(endCheck, 500)
+          setInterval(updateLocation, 500)
+          setInterval(checkLocations, 500)
           addUserToList()
         } else {
-          sessionStorage.setItem("multiplayer", "")
+          sessionStorage.removeItem("multiplayer")
           popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>", true)
         }
       })
     }
+
+    function checkLocations() {
+      get(child(dbRef, "gameid/" + mpcode + "/locations")).then((snapshot) => {
+        if (snapshot.exists()) {
+          var prevplayers = imgTCont.querySelectorAll(".otherPlayer")
+          Object.values(prevplayers).forEach(function (k) { k.remove() })
+          var data = snapshot.val();
+          Object.values(data).forEach(function (e) {
+            if (e.room == currentRoomName && e.name != mpuid) {
+              var elem = document.createElement("div");
+              elem.classList = "invisiclue otherPlayer"
+              elem.style.left = e.postition.left + "px";
+              elem.style.top = e.postition.top + "px";
+              elem.innerHTML = `<img src="src/char.png" width="90%"><br>${e.name}`;
+              imgTCont.appendChild(elem)
+            }
+          })
+        }
+      })
+    }
+
     function throwGuess(gperson) {
       if (suspects[gperson].isMurderer == true) {
         throwAction("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
@@ -128,6 +151,16 @@
         }, 5500)
 
       }
+    }
+
+    function updateLocation() {
+      var toadd = {}
+      toadd["/gameid/" + mpcode + "/locations/" + mpID] = {
+        postition: { left: parseInt(char.style.left), top: parseInt(char.style.top) },
+        room: currentRoomName,
+        name: mpuid
+      };
+      update(dbRef, toadd)
     }
 
     function getTime() {
@@ -162,7 +195,6 @@
           acint = setInterval(removeACheck, 500)
         }
       })
-      console.log("ac")
     }
 
     function endCheck() {
@@ -174,7 +206,6 @@
     }
 
     function removeACheck() {
-      console.log("rac")
       get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
         if (!snapshot.exists()) {
           popup()
@@ -188,6 +219,13 @@
       var toadd = {}
       toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid;
       update(dbRef, toadd)
+      var toadd2 = {}
+      toadd2["/gameid/" + mpcode + "/locations/" + mpID] = {
+        name: mpuid,
+        postition: { left: 0, top: 0 },
+        room: "foyer"
+      };
+      update(dbRef, toadd2)
     }
 
     window.addUserToList = addUserToList
@@ -201,6 +239,7 @@
     window.getTime = getTime
     window.throwGuessProg = throwGuessProg
     window.mpSync = mpSync
+    window.checkLocations = checkLocations
   </script>
 </body>
 <audio loop autoplay id="bmusic">

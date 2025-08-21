@@ -3,6 +3,12 @@
   src: url("src/chapbook.otf") format("opentype");
 }
 
+.otherPlayer {
+  font-size: 10px;
+  text-align: center;
+  height: fit-content !important;
+}
+
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
