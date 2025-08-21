@@ -1,7 +1,7 @@
 // Assignments
 
-var charPicker = ["Betty","Anita","Nicholas","Theodore","Pamala","Arthur"]
-var roomPicker = ["bed","living","bed2","lounge","baseM","attic","kitchen"]
+var charPicker = ["Betty", "Anita", "Nicholas", "Theodore", "Pamala", "Arthur"]
+var roomPicker = ["bed", "living", "bed2", "lounge", "baseM", "attic", "kitchen"]
 var weapon = "knife"
 
 // Rooms
@@ -41,12 +41,12 @@ function getReadableRoom(roomid) {
 // Clue Format: [message(0),ifmurderer(1),room(2)]
 
 var suspects = {
-  "Betty": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a curly-haired old lady","alliance":false},
-  "Anita": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a timid-looking woman wearing a white dress","alliance":false},
-  "Nicholas": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a man with a brown suit and brown hair","alliance":false},
-  "Theodore": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"a skinny-looking young man","alliance":false},
-  "Pamala": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"an angry-looking woman with frizzy brown hair","alliance":false},
-  "Arthur": {"isMurderer":false,"clueATTR":["NM","IM",false],"desc":"an old man with a blue shirt","alliance":false}
+  "Betty": { "isMurderer": false, "clueATTR": ["NM", "IM", false], "desc": "a curly-haired old lady", "alliance": false },
+  "Anita": { "isMurderer": false, "clueATTR": ["NM", "IM", false], "desc": "a timid-looking woman wearing a white dress", "alliance": false },
+  "Nicholas": { "isMurderer": false, "clueATTR": ["NM", "IM", false], "desc": "a man with a brown suit and brown hair", "alliance": false },
+  "Theodore": { "isMurderer": false, "clueATTR": ["NM", "IM", false], "desc": "a skinny-looking young man", "alliance": false },
+  "Pamala": { "isMurderer": false, "clueATTR": ["NM", "IM", false], "desc": "an angry-looking woman with frizzy brown hair", "alliance": false },
+  "Arthur": { "isMurderer": false, "clueATTR": ["NM", "IM", false], "desc": "an old man with a blue shirt", "alliance": false }
 }
 
 function getRandomNM() {
@@ -95,10 +95,10 @@ function getRandRoom2() {
     return chosenRD
   }
 }
-      
+
 Object.keys(suspects).forEach(function (k) {
   suspects[k].clueATTR[2] = getRandRoom()
   suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom2())
   suspects[k].clueATTR[0] = "I saw " + suspects[murderer].desc + " going into the " + getReadableRoom(mroom)
-}) 
+})
 suspects[getRandomNM()].clueATTR[0] = al1 + " and " + al2 + " have been acting weird"

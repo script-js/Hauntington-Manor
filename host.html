@@ -1,167 +1,182 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="src/icon.png">
-    <title>Hauntington Manor - Host Game</title>
-    <script src="assign.js"></script>
-    <script src='https://exactalytics.pages.dev/import.js'></script>
-<script>analyticsInit('Hauntington Manor','3moxYInXFN6fp')</script>
-  </head>
-  <style>* {user-select:auto}</style>
-  <body style="background:black">
-    <div class="hostTitle"><img src="src/icon.png"><p>Hauntington Manor</p><div id="playerBox"></div></div>
-    <div id="players"></div>
-    <div id="hostBox"><h1 class='hostPin'>Loading Pin...</h1></div>
-    <div id="popupBox" style="display:none; position: absolute;   right: 0;   top: 0;   width: 60%;   height: 100%;"></div>
-    <script>
-      var trHour = 0;
-      var trMin = 0;
-      var acint;
-      
-      function pinShow() {
-        hostBox.innerHTML = "<img style='margin:auto' src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hauntington-manor.pages.dev/join?id=" + newid + "'><h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
-      }
 
-      function popup(text) {
-  if (!text) {
-    popupBox.style.height = "2px"
-    popupBox.innerHTML = "";
-    setTimeout(function() {
-      popupBox.style.display = "none";
-    },400)
-  } else {
-  popupBox.style.display = "block";
-  setTimeout(function() {
-    popupBox.style.height = "98%"
-  },50)
-    setTimeout(function() {popupBox.innerHTML = "<p>&nbsp;</p>" + text},400)
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="src/icon.png">
+  <title>Hauntington Manor - Host Game</title>
+  <script src="assign.js"></script>
+  <script src='https://exactalytics.pages.dev/import.js'></script>
+  <script>analyticsInit('Hauntington Manor', '3moxYInXFN6fp')</script>
+</head>
+<style>
+  * {
+    user-select: auto
   }
-}
-    </script>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+</style>
 
-  // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCU_4SYzTVxlCcChVYBo5NIWxWRn6Q5ZPg",
-  authDomain: "hauntington-manor-mp.firebaseapp.com",
-  databaseURL: "https://hauntington-manor-mp-default-rtdb.firebaseio.com",
-  projectId: "hauntington-manor-mp",
-  storageBucket: "hauntington-manor-mp.appspot.com",
-  messagingSenderId: "87277618348",
-  appId: "1:87277618348:web:ce8dd4d75e18032bd64b09"
-};   
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);  
-  function createGame() {
-  window.newid = Math.ceil(Math.random() * (20000000 - 10000000) + 10000000)
-    get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
-      if (snapshot.exists()) {createGame()} else {
-      set(ref(getDatabase(), 'gameid/' + newid), {
-        "al1": al1,
-        "al2": al2,
-        "murderer": murderer
-      });
-      set(ref(getDatabase(), 'gameid/' + newid + "/rooms"), rooms);
-      set(ref(getDatabase(), 'gameid/' + newid + "/suspects"), suspects);
+<body style="background:black">
+  <div class="hostTitle"><img src="src/icon.png">
+    <p>Hauntington Manor</p>
+    <div id="playerBox"></div>
+  </div>
+  <div id="players"></div>
+  <div id="hostBox">
+    <h1 class='hostPin'>Loading Pin...</h1>
+  </div>
+  <div id="popupBox" style="display:none; position: absolute;   right: 0;   top: 0;   width: 60%;   height: 100%;">
+  </div>
+  <script>
+    var trHour = 0;
+    var trMin = 0;
+    var acint;
+
+    function pinShow() {
+      hostBox.innerHTML = "<img style='margin:auto' src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hauntington-manor.pages.dev/join?id=" + newid + "'><h1 class='hostPin' style='font-size:100px'>" + newid + "</h1><h2>Join at hauntington-manor.pages.dev/join</h2><p></p><button class='startB' style='animation:none' onclick='startG()'>Start</button>"
+    }
+
+    function popup(text) {
+      if (!text) {
+        popupBox.style.height = "2px"
+        popupBox.innerHTML = "";
+        setTimeout(function () {
+          popupBox.style.display = "none";
+        }, 400)
+      } else {
+        popupBox.style.display = "block";
+        setTimeout(function () {
+          popupBox.style.height = "98%"
+        }, 50)
+        setTimeout(function () { popupBox.innerHTML = "<p>&nbsp;</p>" + text }, 400)
+      }
+    }
+  </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCU_4SYzTVxlCcChVYBo5NIWxWRn6Q5ZPg",
+      authDomain: "hauntington-manor-mp.firebaseapp.com",
+      databaseURL: "https://hauntington-manor-mp-default-rtdb.firebaseio.com",
+      projectId: "hauntington-manor-mp",
+      storageBucket: "hauntington-manor-mp.appspot.com",
+      messagingSenderId: "87277618348",
+      appId: "1:87277618348:web:ce8dd4d75e18032bd64b09"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    function createGame() {
+      window.newid = Math.ceil(Math.random() * (20000000 - 10000000) + 10000000)
       get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
-          if (snapshot.exists()) {
-            pinShow()
-          }
-      })
-      }})
-      }
-      function endGame(curl) {
-        set(ref(getDatabase(), 'gameid/' + newid), {});
-        sessionStorage.setItem("murderer",murderer)
-        if (curl) {location.replace(curl)} else {location.replace("/message/loseMPHost.html")}
-      }
-
-      function count() {
-  trMin = trMin + 1
-  if (trMin == 60) {
-    trMin = 0
-    trHour = trHour + 1
-  }
-  if (trMin.toString().length == 1) {
-    var minTXT = "0" + trMin
-  } else {
-    var minTXT = trMin
-  }
-  if (trHour == 12) {
-    set(ref(getDatabase(),'gameid/' + newid + '/timeroff'),{"done":true})
-    popup("<h1>Time's Up!</h1>")
-    setTimeout(endGame,3000)
-  } else {
-    hostETA.innerHTML = trHour + ":" + minTXT
-  }
-}
-
-      function actionCheck() {
-        get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
-          if (snapshot.exists()) {
-            var data = snapshot.val()
-            var act = data.content
-            if (act.includes("CODE:")) {
-              var actcode = act.replace("CODE:","")
-              if (actcode == "WIN") {
-                endGame("message/winMP.html")
-              }
-            } else {
-              popup(act)
+        if (snapshot.exists()) { createGame() } else {
+          set(ref(getDatabase(), 'gameid/' + newid), {
+            "al1": al1,
+            "al2": al2,
+            "murderer": murderer
+          });
+          set(ref(getDatabase(), 'gameid/' + newid + "/rooms"), rooms);
+          set(ref(getDatabase(), 'gameid/' + newid + "/suspects"), suspects);
+          get(child(ref(getDatabase()), "gameid/" + newid)).then((snapshot) => {
+            if (snapshot.exists()) {
+              pinShow()
             }
-            clearInterval(acint)
-            acint = setInterval(removeACheck,500)
-          }
-        })
-      }
+          })
+        }
+      })
+    }
+    function endGame(curl) {
+      set(ref(getDatabase(), 'gameid/' + newid), {});
+      sessionStorage.setItem("murderer", murderer)
+      if (curl) { location.replace(curl) } else { location.replace("/message/loseMPHost.html") }
+    }
 
-          function removeACheck() {
-            console.log("rac")
-            get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
-              if (!snapshot.exists()) {
-                popup()
-                clearInterval(acint)
-                acint = setInterval(actionCheck,500)
-              }})
-          }
-
-          function playerCheck() {
-            get(child(ref(getDatabase()), "gameid/" + newid + "/players")).then((snapshot) => {
-              if (snapshot.exists()) {
-                var gdata = snapshot.val();
-                var toadd = "";
-                Object.keys(gdata).forEach(function (k) {
-                  toadd = toadd + "<div class='hostPlayer'>" + gdata[k] + "</div>"
-                })
-                playerBox.innerHTML = toadd
-              }
-            })
-          } 
-      setInterval(playerCheck,1000)
-      acint = setInterval(actionCheck,500)
-      
-      createGame()
-      window.endGame = endGame
-      window.count = count
-      window.createGame = createGame
-      function startG() {
-        hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><p>&nbsp;</p><h1 id='hostETA'>0:00</h1><button class='startB' style='animation:none' onclick='endGame()'>End Game</button>";
-        setInterval(count,500)
-        set(ref(getDatabase(), 'gameid/' + newid + "/started"), {"done":true});
+    function count() {
+      trMin = trMin + 1
+      if (trMin == 60) {
+        trMin = 0
+        trHour = trHour + 1
       }
-      window.startG = startG
-      window.onbeforeunload = function() {set(ref(getDatabase(), 'gameid/' + newid), {})}
-</script>
-     <audio loop autoplay id="bmusic">
-       <source src="src/back.mp3" type="audio/mpeg">
-     </audio> 
-     <script>bmusic.volume = 0.3</script>
-  </body>
+      if (trMin.toString().length == 1) {
+        var minTXT = "0" + trMin
+      } else {
+        var minTXT = trMin
+      }
+      if (trHour == 12) {
+        set(ref(getDatabase(), 'gameid/' + newid + '/timeroff'), { "done": true })
+        popup("<h1>Time's Up!</h1>")
+        setTimeout(endGame, 3000)
+      } else {
+        hostETA.innerHTML = trHour + ":" + minTXT
+      }
+    }
+
+    function actionCheck() {
+      get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
+        if (snapshot.exists()) {
+          var data = snapshot.val()
+          var act = data.content
+          if (act.includes("CODE:")) {
+            var actcode = act.replace("CODE:", "")
+            if (actcode == "WIN") {
+              endGame("message/winMP.html")
+            }
+          } else {
+            popup(act)
+          }
+          clearInterval(acint)
+          acint = setInterval(removeACheck, 500)
+        }
+      })
+    }
+
+    function removeACheck() {
+      console.log("rac")
+      get(child(ref(getDatabase()), "gameid/" + newid + "/action")).then((snapshot) => {
+        if (!snapshot.exists()) {
+          popup()
+          clearInterval(acint)
+          acint = setInterval(actionCheck, 500)
+        }
+      })
+    }
+
+    function playerCheck() {
+      get(child(ref(getDatabase()), "gameid/" + newid + "/players")).then((snapshot) => {
+        if (snapshot.exists()) {
+          var gdata = snapshot.val();
+          var toadd = "";
+          Object.keys(gdata).forEach(function (k) {
+            toadd = toadd + "<div class='hostPlayer'>" + gdata[k] + "</div>"
+          })
+          playerBox.innerHTML = toadd
+        }
+      })
+    }
+    setInterval(playerCheck, 1000)
+    acint = setInterval(actionCheck, 500)
+
+    createGame()
+    window.endGame = endGame
+    window.count = count
+    window.createGame = createGame
+    function startG() {
+      hostBox.innerHTML = "<h1 class='hostPin'>" + newid + "</h1><p>&nbsp;</p><h1 id='hostETA'>0:00</h1><button class='startB' style='animation:none' onclick='endGame()'>End Game</button>";
+      setInterval(count, 500)
+      set(ref(getDatabase(), 'gameid/' + newid + "/started"), { "done": true });
+    }
+    window.startG = startG
+    window.onbeforeunload = function () { set(ref(getDatabase(), 'gameid/' + newid), {}) }
+  </script>
+  <audio loop autoplay id="bmusic">
+    <source src="src/back.mp3" type="audio/mpeg">
+  </audio>
+  <script>bmusic.volume = 0.3</script>
+</body>
+
 </html>

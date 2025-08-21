@@ -1,40 +1,43 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <link rel="stylesheet" href="/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/src/icon.png">
-    <title>Hauntington Manor</title>
-  </head>
-  <body style="background:black;text-align:center;">
-    <h1>Join a Multiplayer Game</h1>
-    <input style="background: black;border: 2px solid white;" id="goip" placeholder="Game ID">
-    <br>
-    <input style="background: black;border: 2px solid white;" id="goip2" placeholder="Username">
-    <p id="errtext" style="color:red"></p>
-    <button class="popupCB" style="animation:none" onclick="join()">Join</button>
-    <script>
-      if (localStorage.getItem("mpname")) {
-        goip2.value = localStorage.getItem("mpname")
-      }
 
-      var jid = new URLSearchParams(window.location.search).get("id");
-      if (jid) {
-        goip.value = jid;
-        goip.hidden = "true"
-      }
-      
-      function join() {
-        if (goip.value) {
-          if (goip2.value) {
-            localStorage.setItem("mpname",goip2.value)
-          }
-          sessionStorage.setItem("multiplayer",goip.value)
-          location.replace("play.html")
-        } else {
-          errtext.innerHTML = "Enter a PIN"
+<head>
+  <link rel="stylesheet" href="/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/src/icon.png">
+  <title>Hauntington Manor</title>
+</head>
+
+<body style="background:black;text-align:center;">
+  <h1>Join a Multiplayer Game</h1>
+  <input style="background: black;border: 2px solid white;" id="goip" placeholder="Game ID">
+  <br>
+  <input style="background: black;border: 2px solid white;" id="goip2" placeholder="Username">
+  <p id="errtext" style="color:red"></p>
+  <button class="popupCB" style="animation:none" onclick="join()">Join</button>
+  <script>
+    if (localStorage.getItem("mpname")) {
+      goip2.value = localStorage.getItem("mpname")
+    }
+
+    var jid = new URLSearchParams(window.location.search).get("id");
+    if (jid) {
+      goip.value = jid;
+      goip.hidden = "true"
+    }
+
+    function join() {
+      if (goip.value) {
+        if (goip2.value) {
+          localStorage.setItem("mpname", goip2.value)
         }
+        sessionStorage.setItem("multiplayer", goip.value)
+        location.replace("play.html")
+      } else {
+        errtext.innerHTML = "Enter a PIN"
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>

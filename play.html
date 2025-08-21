@@ -1,193 +1,212 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="src/icon.png">
-    <title>Hauntington Manor - Singleplayer</title>
-    <link rel="preload" as="image" href="src/room/attic.png">
-    <link rel="preload" as="image" href="src/room/baseM.png">
-    <link rel="preload" as="image" href="src/room/bed.png">
-    <link rel="preload" as="image" href="src/room/bed2.png">
-    <link rel="preload" as="image" href="src/room/kitchen.png">
-    <link rel="preload" as="image" href="src/room/living.png">
-    <link rel="preload" as="image" href="src/room/lounge.png">
-    <link rel="preload" as="image" href="src/room/uHall.png">
-    <script src="assign.js"></script>
-    <script src='https://exactalytics.pages.dev/import.js'></script>
-<script>analyticsInit('Hauntington Manor','3moxYInXFN6fp')</script>
-    <style>* {overflow: hidden;overscroll-behavior: none;}</style>
-  </head>
-  <body>
-    <div class="modal" id="popupBack"><div id="popupBox"></div></div>
-    <div class="controls"><button onclick="splist()" class="uibtn">groups</button><button class="uibtn" onclick="popup(cluebox)">search</button><div id="etabox">0:00</div><button class="uibtn" onclick="cShow()">check_circle</button><button onclick="sMap()" class="uibtn">map</button></div>
-    <div id="imgTCont"><img src="src/room.png" id="rimg"/><img src="src/char.png" id="char"></div>
-    <div class="arrowContainer">
-      Character Speed:
-      <br><input type="range" min="1" max="5" value="1" onchange="speed = parseInt(this.value)"><br>
-      <button class="arrow" ontouchstart="moveSS('u')" ontouchend="moveSS()" onmousedown="moveSS('u')" onmouseup="moveSS()">arrow_upward</button>
-      <br>
-      <button class="arrow" ontouchstart="moveSS('l')" ontouchend="moveSS()" onmousedown="moveSS('l')" onmouseup="moveSS()">arrow_back</button>
-      <div style="width:80px;display:inline-block"></div>
-      <button class="arrow" ontouchstart="moveSS('r')" ontouchend="moveSS()" onmousedown="moveSS('r')" onmouseup="moveSS()">arrow_forward</button>
-      <br>
-      <button class="arrow" ontouchstart="moveSS('d')" ontouchend="moveSS()" onmousedown="moveSS('d')" onmouseup="moveSS()">arrow_downward</button>
-    </div>
-    <!-- Multiplayer Functions -->
-        <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getDatabase, ref, set, get, child, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCU_4SYzTVxlCcChVYBo5NIWxWRn6Q5ZPg",
-  authDomain: "hauntington-manor-mp.firebaseapp.com",
-  databaseURL: "https://hauntington-manor-mp-default-rtdb.firebaseio.com",
-  projectId: "hauntington-manor-mp",
-  storageBucket: "hauntington-manor-mp.appspot.com",
-  messagingSenderId: "87277618348",
-  appId: "1:87277618348:web:ce8dd4d75e18032bd64b09"
-};
-      
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);  
-  window.fbON = app
-  const db = getDatabase()
-  const dbRef = ref(db)
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="src/icon.png">
+  <title>Hauntington Manor - Singleplayer</title>
+  <link rel="preload" as="image" href="src/room/attic.png">
+  <link rel="preload" as="image" href="src/room/baseM.png">
+  <link rel="preload" as="image" href="src/room/bed.png">
+  <link rel="preload" as="image" href="src/room/bed2.png">
+  <link rel="preload" as="image" href="src/room/kitchen.png">
+  <link rel="preload" as="image" href="src/room/living.png">
+  <link rel="preload" as="image" href="src/room/lounge.png">
+  <link rel="preload" as="image" href="src/room/uHall.png">
+  <script src="assign.js"></script>
+  <script src='https://exactalytics.pages.dev/import.js'></script>
+  <script>analyticsInit('Hauntington Manor', '3moxYInXFN6fp')</script>
+  <style>
+    * {
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+  </style>
+</head>
 
-          function throwAction(content) {
-            get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
-            if (snapshot.exists()) {
-              set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
-              setTimeout(function() {throwAction(content)},500)
-            } else {
-            clearInterval(acint)
-            set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
-              content: content
-            });
-            }
-            })
-          } 
+<body>
+  <div class="modal" id="popupBack">
+    <div id="popupBox"></div>
+  </div>
+  <div class="controls"><button onclick="splist()" class="uibtn">groups</button><button class="uibtn"
+      onclick="popup(cluebox)">search</button>
+    <div id="etabox">0:00</div><button class="uibtn" onclick="cShow()">check_circle</button><button onclick="sMap()"
+      class="uibtn">map</button>
+  </div>
+  <div id="imgTCont"><img src="src/room.png" id="rimg" /><img src="src/char.png" id="char"></div>
+  <div class="arrowContainer">
+    Character Speed:
+    <br><input type="range" min="1" max="5" value="1" onchange="speed = parseInt(this.value)"><br>
+    <button class="arrow" ontouchstart="moveSS('u')" ontouchend="moveSS()" onmousedown="moveSS('u')"
+      onmouseup="moveSS()">arrow_upward</button>
+    <br>
+    <button class="arrow" ontouchstart="moveSS('l')" ontouchend="moveSS()" onmousedown="moveSS('l')"
+      onmouseup="moveSS()">arrow_back</button>
+    <div style="width:80px;display:inline-block"></div>
+    <button class="arrow" ontouchstart="moveSS('r')" ontouchend="moveSS()" onmousedown="moveSS('r')"
+      onmouseup="moveSS()">arrow_forward</button>
+    <br>
+    <button class="arrow" ontouchstart="moveSS('d')" ontouchend="moveSS()" onmousedown="moveSS('d')"
+      onmouseup="moveSS()">arrow_downward</button>
+  </div>
+  <!-- Multiplayer Functions -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, set, get, child, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-          function removeAction() {
-            set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
-            acint = setInterval(actionCheck,500)
-          }
-          
-          function mpSync() {
-            get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
-              if (snapshot.exists()) {
-                var gamedata = snapshot.val()
-                murderer = gamedata.murderer;
-                al1 = gamedata.al1;
-                al2 = gamedata.al2;
-                rooms = gamedata.rooms;
-                suspects = gamedata.suspects
-                popup("<h1>Waiting for the game to start...</h1>",true)
-                scheckint = setInterval(startCheck,500)
-                acint = setInterval(actionCheck,500)
-                setInterval(endCheck,500)
-                addUserToList()
-              } else {
-                sessionStorage.setItem("multiplayer","")
-                popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>",true)
-              }
-            })
-          }
-          function throwGuess(gperson) {
-            if (suspects[gperson].isMurderer == true) {
-              throwAction("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
-              setTimeout("throwAction('CODE:WIN')",5000)
-            } else {
-              throwAction("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
-              setTimeout(function() {
-                removeAction()
-                var toadd = {}
-            toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid + "<br><span style='color:red'>Eliminated</span>";
-            update(dbRef,toadd)
-              },5500)
-              
-            }
-          }
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCU_4SYzTVxlCcChVYBo5NIWxWRn6Q5ZPg",
+      authDomain: "hauntington-manor-mp.firebaseapp.com",
+      databaseURL: "https://hauntington-manor-mp-default-rtdb.firebaseio.com",
+      projectId: "hauntington-manor-mp",
+      storageBucket: "hauntington-manor-mp.appspot.com",
+      messagingSenderId: "87277618348",
+      appId: "1:87277618348:web:ce8dd4d75e18032bd64b09"
+    };
 
-          function getTime() {
-            get(child(dbRef, "gameid/" + mpcode + "/timeroff")).then((snapshot) => {
-              if (snapshot.exists()) {
-                popup("<h1>Times Up!</h1>",true)
-                setTimeout(function() {location.replace("message/loseMP.html")},2000)
-              }
-            })
-          }
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    window.fbON = app
+    const db = getDatabase()
+    const dbRef = ref(db)
 
-          function throwGuessProg(username) {
-            throwAction("<h1>" + username + "</h1><h2>is guessing...</h2>")
-          }
+    function throwAction(content) {
+      get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
+        if (snapshot.exists()) {
+          set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
+          setTimeout(function () { throwAction(content) }, 500)
+        } else {
+          clearInterval(acint)
+          set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {
+            content: content
+          });
+        }
+      })
+    }
 
-          function startCheck() {
-            get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
-              if (snapshot.exists()) {
-                popup()
-                rungame()
-                clearInterval(scheckint)
-              }
-            })
-          }
+    function removeAction() {
+      set(ref(getDatabase(), 'gameid/' + mpcode + "/action"), {});
+      acint = setInterval(actionCheck, 500)
+    }
 
-          function actionCheck() {
-        get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
-          if (snapshot.exists()) {
-            var data = snapshot.val()
-            popup(data.content,true)
-            clearInterval(acint)
-            acint = setInterval(removeACheck,500)
-          }
-        })
-            console.log("ac")
+    function mpSync() {
+      get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
+        if (snapshot.exists()) {
+          var gamedata = snapshot.val()
+          murderer = gamedata.murderer;
+          al1 = gamedata.al1;
+          al2 = gamedata.al2;
+          rooms = gamedata.rooms;
+          suspects = gamedata.suspects
+          popup("<h1>Waiting for the game to start...</h1>", true)
+          scheckint = setInterval(startCheck, 500)
+          acint = setInterval(actionCheck, 500)
+          setInterval(endCheck, 500)
+          addUserToList()
+        } else {
+          sessionStorage.setItem("multiplayer", "")
+          popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>", true)
+        }
+      })
+    }
+    function throwGuess(gperson) {
+      if (suspects[gperson].isMurderer == true) {
+        throwAction("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>")
+        setTimeout("throwAction('CODE:WIN')", 5000)
+      } else {
+        throwAction("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>")
+        setTimeout(function () {
+          removeAction()
+          var toadd = {}
+          toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid + "<br><span style='color:red'>Eliminated</span>";
+          update(dbRef, toadd)
+        }, 5500)
+
       }
+    }
 
-              function endCheck() {
-                get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
-              if (!snapshot.exists()) {
-                location.replace("message/winMP.html")
-              }
-            })
-              }
+    function getTime() {
+      get(child(dbRef, "gameid/" + mpcode + "/timeroff")).then((snapshot) => {
+        if (snapshot.exists()) {
+          popup("<h1>Times Up!</h1>", true)
+          setTimeout(function () { location.replace("message/loseMP.html") }, 2000)
+        }
+      })
+    }
 
-          function removeACheck() {
-            console.log("rac")
-            get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
-              if (!snapshot.exists()) {
-                popup()
-                clearInterval(acint)
-                acint = setInterval(actionCheck,500)
-              }})
-          }
+    function throwGuessProg(username) {
+      throwAction("<h1>" + username + "</h1><h2>is guessing...</h2>")
+    }
 
-          function addUserToList() {
-            var toadd = {}
-            toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid;
-            update(dbRef,toadd)
-          }
-          
-          window.addUserToList = addUserToList
+    function startCheck() {
+      get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
+        if (snapshot.exists()) {
+          popup()
+          rungame()
+          clearInterval(scheckint)
+        }
+      })
+    }
 
-                                                                                window.removeACheck = removeACheck
-          window.throwAction = throwAction
-          window.removeAction = removeAction
-          window.actionCheck = actionCheck
-          window.startCheck = startCheck
-          window.throwGuess = throwGuess
-          window.getTime = getTime
-          window.throwGuessProg = throwGuessProg
-          window.mpSync = mpSync
-</script>
-  </body>
-  <audio loop autoplay id="bmusic">
-       <source src="src/back.mp3" type="audio/mpeg">
-     </audio> 
-     <script>bmusic.volume = 0.3</script>
-  <script src="script.js"></script>
+    function actionCheck() {
+      get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
+        if (snapshot.exists()) {
+          var data = snapshot.val()
+          popup(data.content, true)
+          clearInterval(acint)
+          acint = setInterval(removeACheck, 500)
+        }
+      })
+      console.log("ac")
+    }
+
+    function endCheck() {
+      get(child(dbRef, "gameid/" + mpcode)).then((snapshot) => {
+        if (!snapshot.exists()) {
+          location.replace("message/winMP.html")
+        }
+      })
+    }
+
+    function removeACheck() {
+      console.log("rac")
+      get(child(ref(getDatabase()), "gameid/" + mpcode + "/action")).then((snapshot) => {
+        if (!snapshot.exists()) {
+          popup()
+          clearInterval(acint)
+          acint = setInterval(actionCheck, 500)
+        }
+      })
+    }
+
+    function addUserToList() {
+      var toadd = {}
+      toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid;
+      update(dbRef, toadd)
+    }
+
+    window.addUserToList = addUserToList
+
+    window.removeACheck = removeACheck
+    window.throwAction = throwAction
+    window.removeAction = removeAction
+    window.actionCheck = actionCheck
+    window.startCheck = startCheck
+    window.throwGuess = throwGuess
+    window.getTime = getTime
+    window.throwGuessProg = throwGuessProg
+    window.mpSync = mpSync
+  </script>
+</body>
+<audio loop autoplay id="bmusic">
+  <source src="src/back.mp3" type="audio/mpeg">
+</audio>
+<script>bmusic.volume = 0.3</script>
+<script src="script.js"></script>
+
 </html>
