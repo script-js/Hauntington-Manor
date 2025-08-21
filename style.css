@@ -63,7 +63,7 @@ body {
     display: none;
   }
 
-  #hostBox {
+  .hostBox {
     width: 100%;
     left: 0;
   }
@@ -86,10 +86,18 @@ body {
     width: 500px;
   }
 
-  #hostBox {
+  .hostBox {
     width: 70%;
     right: 0;
   }
+}
+
+#analogClock {
+  background-image: url('src/clock.png');
+  display: none;
+  background-size: cover;
+  padding: 35px;
+  padding-bottom: 20px;
 }
 
 h1 {
@@ -333,7 +341,7 @@ h1 {
   color: black;
 }
 
-#hostBox {
+.hostBox {
   position: absolute;
   top: 0;
   height: 100%;
