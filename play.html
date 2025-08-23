@@ -29,10 +29,10 @@
   <div class="modal" id="popupBack">
     <div id="popupBox"></div>
   </div>
-  <div class="controls"><button onclick="splist()" class="uibtn">groups</button><button class="uibtn"
-      onclick="popup(cluebox)">search</button>
-    <div id="etabox">0:00</div><button class="uibtn" onclick="cShow()">check_circle</button><button onclick="sMap()"
-      class="uibtn">map</button>
+  <div class="controls"><button onclick="splist()" class="uibtn" title="Show Characters">groups</button><button
+      class="uibtn" onclick="popup(cluebox)" title="Found Clues">search</button>
+    <div id="etabox">0:00</div><button class="uibtn" onclick="cShow()" title="Make a Guess">check_circle</button><button
+      title="Show Map" onclick="sMap()" class="uibtn">map</button>
   </div>
   <div id="imgTCont"><img src="src/room.png" id="rimg" /><img src="src/char.png" id="char"></div>
   <div class="arrowContainer">
@@ -109,7 +109,7 @@
           setInterval(endCheck, 500)
           setInterval(updateLocation, 500)
           setInterval(checkLocations, 500)
-          addUserToList()
+          if (!sessionStorage.getItem("currentSession") || JSON.parse(sessionStorage.getItem("currentSession")).type == "singleplayer") addUserToList();
         } else {
           sessionStorage.removeItem("multiplayer")
           popup("<h1>Game ID Inactive</h1><a href='/'><button class='popupCB'>Quit to Title</button></a>", true)
@@ -154,16 +154,19 @@
     }
 
     function updateLocation() {
-      var toadd = {}
-      toadd["/gameid/" + mpcode + "/locations/" + mpID] = {
-        postition: { left: parseInt(char.style.left), top: parseInt(char.style.top) },
-        room: currentRoomName,
-        name: mpuid
-      };
-      update(dbRef, toadd)
+      if (char.style.left && char.style.top) {
+        var toadd = {}
+        toadd["/gameid/" + mpcode + "/locations/" + mpID] = {
+          postition: { left: parseInt(char.style.left), top: parseInt(char.style.top) },
+          room: currentRoomName,
+          name: mpuid
+        };
+        update(dbRef, toadd)
+      }
     }
 
     function getTime() {
+      saveMPSession()
       get(child(dbRef, "gameid/" + mpcode + "/timeroff")).then((snapshot) => {
         if (snapshot.exists()) {
           popup("<h1>Times Up!</h1>", true)
@@ -179,9 +182,8 @@
     function startCheck() {
       get(child(dbRef, "gameid/" + mpcode + "/started")).then((snapshot) => {
         if (snapshot.exists()) {
-          popup()
-          rungame()
           clearInterval(scheckint)
+          rungame()
         }
       })
     }
@@ -216,6 +218,7 @@
     }
 
     function addUserToList() {
+      console.log("adding")
       var toadd = {}
       toadd["/gameid/" + mpcode + "/players/" + mpID] = mpuid;
       update(dbRef, toadd)
@@ -226,10 +229,11 @@
         room: "foyer"
       };
       update(dbRef, toadd2)
+      saveMPSession();
+      console.log("added")
     }
 
     window.addUserToList = addUserToList
-
     window.removeACheck = removeACheck
     window.throwAction = throwAction
     window.removeAction = removeAction

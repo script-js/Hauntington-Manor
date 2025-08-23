@@ -9,6 +9,7 @@ var mpID = btoa(Math.random())
 var mvar;
 var intJSON = {};
 var foundMW = false;
+var norestore = false;
 var started = false;
 var cluebox = "<h1>Clues</h1>";
 var trMin = 0;
@@ -25,12 +26,54 @@ var mpcode = false;
 function isetup() {
   if (fbON) {
     clearInterval(setupint)
+    if (sessionStorage.getItem("currentSession")) {
+      restoreSession(JSON.parse(sessionStorage.getItem("currentSession")));
+    }
     mpcode = sessionStorage.getItem("multiplayer")
     if (localStorage.getItem("mpname")) {
       mpuid = localStorage.getItem("mpname")
     }
     mpSync()
     document.title = "Hauntington Manor - Multiplayer"
+    window.onbeforeunload = function () { return true }
+  }
+}
+
+function saveMPSession() {
+  var session = {
+    type: "multiplayer",
+    id: sessionStorage.getItem("multiplayer"),
+    uid: mpID,
+    name: mpuid,
+    room: currentRoomName,
+    foundMW,
+    cluebox
+  }
+  sessionStorage.setItem("currentSession", JSON.stringify(session))
+}
+
+function saveSPSession() {
+  var session = {
+    type: "singleplayer",
+    room: currentRoomName,
+    foundMW,
+    cluebox,
+    time: [trHour, trMin]
+  }
+  sessionStorage.setItem("currentSession", JSON.stringify(session))
+}
+
+function restoreSession(currentSession) {
+  norestore = true;
+  foundMW = currentSession.foundMW;
+  cluebox = currentSession.cluebox;
+  currentRoomName = currentSession.room;
+  if (currentSession.type == "multiplayer") {
+    mpID = currentRoomName.uid;
+    mpuid = currentSession.name;
+  } else if (currentSession.type == "singleplayer") {
+    trHour = currentSession.time[0];
+    trMin = currentSession.time[1];
   }
 }
 
@@ -365,9 +408,14 @@ function cShow() {
 }
 
 function rungame() {
-  popup()
   resetCPOS()
-  getTransitions("foyer")
+  popup()
+  if (sessionStorage.getItem("currentSession") && !norestore) {
+    restoreSession(JSON.parse(sessionStorage.getItem("currentSession")));
+    rChange(currentRoomName)
+  } else {
+    getTransitions("foyer")
+  }
   setInterval(count, 500)
 }
 
@@ -391,6 +439,7 @@ function count() {
       etabox.innerHTML = trHour + ":" + minTXT
     }
   }
+  saveSPSession();
 }
 
 function splist() {
