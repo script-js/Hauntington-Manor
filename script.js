@@ -107,6 +107,7 @@ function guess(elem1) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>The Murderer!</p>", true)
     if (mpcode) {
       setTimeout(function () { location.replace("message/winMP.html") }, 6000)
+      window.onbeforeunload = null;
     } else {
       setTimeout(function () { location.replace("message/winSP.html") }, 6000)
     }
