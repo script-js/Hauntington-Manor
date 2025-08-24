@@ -114,6 +114,7 @@ function guess(elem1) {
     popup("<h1>" + gperson + "</h1>is<p class='moi'>Innocent!</p>", true)
     if (mpcode) {
       setTimeout(function () { location.replace("message/loseMP.html") }, 6000)
+      window.onbeforeunload = null;
     } else {
       setTimeout(function () { location.replace("message/loseSP.html") }, 6000)
     }
