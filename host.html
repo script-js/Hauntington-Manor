@@ -172,6 +172,7 @@
     function endGame(curl) {
       set(ref(getDatabase(), 'gameid/' + newid), {});
       sessionStorage.setItem("murderer", murderer)
+      window.onbeforeunload = null;
       if (curl) { location.replace(curl) } else { location.replace("/message/loseMPHost.html") }
     }
 
