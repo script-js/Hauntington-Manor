@@ -98,7 +98,7 @@ function getRandRoom2() {
 
 Object.keys(suspects).forEach(function (k) {
   suspects[k].clueATTR[2] = getRandRoom()
-  suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(getRandRoom2())
+  suspects[k].clueATTR[1] = "I saw " + suspects[getRandomNM()].desc + " going into the " + getReadableRoom(mroom)
   suspects[k].clueATTR[0] = "I saw " + suspects[murderer].desc + " going into the " + getReadableRoom(mroom)
 })
 suspects[getRandomNM()].clueATTR[0] = al1 + " and " + al2 + " have been acting weird"
