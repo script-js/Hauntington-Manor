@@ -35,7 +35,6 @@ function isetup() {
     }
     mpSync()
     document.title = "Hauntington Manor - Multiplayer"
-    window.onbeforeunload = function () { return true }
   }
 }
 
@@ -52,29 +51,13 @@ function saveMPSession() {
   sessionStorage.setItem("currentSession", JSON.stringify(session))
 }
 
-function saveSPSession() {
-  var session = {
-    type: "singleplayer",
-    room: currentRoomName,
-    foundMW,
-    cluebox,
-    time: [trHour, trMin]
-  }
-  sessionStorage.setItem("currentSession", JSON.stringify(session))
-}
-
 function restoreSession(currentSession) {
   norestore = true;
   foundMW = currentSession.foundMW;
   cluebox = currentSession.cluebox;
   currentRoomName = currentSession.room;
-  if (currentSession.type == "multiplayer") {
-    mpID = currentRoomName.uid;
-    mpuid = currentSession.name;
-  } else if (currentSession.type == "singleplayer") {
-    trHour = currentSession.time[0];
-    trMin = currentSession.time[1];
-  }
+  mpID = currentRoomName.uid;
+  mpuid = currentSession.name;
 }
 
 if (!sessionStorage.getItem("multiplayer")) {
@@ -94,6 +77,8 @@ if (!sessionStorage.getItem("multiplayer")) {
 }
 
 // Functions/Event Listeners
+
+window.onbeforeunload = function () { return true }
 
 function resetCPOS() {
   char.style.left = (rimg.getBoundingClientRect().width / 2) + "px"
@@ -441,7 +426,6 @@ function count() {
       etabox.innerHTML = trHour + ":" + minTXT
     }
   }
-  saveSPSession();
 }
 
 function splist() {
